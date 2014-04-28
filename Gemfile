@@ -38,6 +38,8 @@ group :test, :development do
   gem 'launchy'
 end
 
+gem "spring-commands-rspec", group: :development
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
