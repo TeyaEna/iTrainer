@@ -4,9 +4,14 @@ describe User do
  subject { FactoryGirl.build(:user) }
 
   describe "validations" do
-    it "validates the presence of the avatar" do
+    it "validates the files can be attached" do
       subject.step = "2nd step"
       subject.should have_attached_file(:avatar)
+    end
+
+    it "validates the presence of attachment" do
+      subject.step = "2nd step"
+      subject.should validate_attachment_presence(:avatar)
     end
 
     it "validates the content type of the attachment" do
