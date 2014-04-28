@@ -5,6 +5,7 @@ require 'rspec/rails'
 require 'rspec/autorun'
 require 'capybara/rspec'
 require 'database_cleaner'
+require "paperclip/matchers"
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
@@ -18,6 +19,7 @@ RSpec.configure do |config|
   config.include Warden::Test::Helpers
   config.include Devise::TestHelpers, :type => :controller
   config.include FactoryGirl::Syntax::Methods
+  config.include Paperclip::Shoulda::Matchers
   config.use_transactional_fixtures = true
   config.infer_base_class_for_anonymous_controllers = false
   config.order = "random"
