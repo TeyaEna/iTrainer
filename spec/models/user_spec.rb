@@ -4,11 +4,17 @@ describe User do
  subject { FactoryGirl.build(:user) }
 
   describe "validations" do
-    it { should have_attached_file(:avatar) }
-    it { should validate_attachment_presence(:avatar) }
-    it { should validate_attachment_content_type(:avatar).
+    it "validates the presence of the avatar" do
+      subject.step = "2nd step"
+      subject.should have_attached_file(:avatar)
+    end
+
+    it "validates the content type of the attachment" do
+      subject.step = "2nd step"
+      subject.should validate_attachment_content_type(:avatar).
                 allowing('image/png', 'image/gif').
-                rejecting('text/plain', 'text/xml') }
+                rejecting('text/plain', 'text/xml')
+    end
 
     it "validates password length" do
       subject.password = '12abc'
@@ -52,7 +58,7 @@ describe User do
 
     it "validates presence of experience on create" do
       subject.experience = ""
-      subject.step = "1st step"
+      subject.step = "2nd step"
       subject.should have(1).error_on(:experience)
     end
 
