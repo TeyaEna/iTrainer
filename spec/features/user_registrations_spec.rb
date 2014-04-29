@@ -23,7 +23,7 @@ feature "User Registration" do
     attach_file("Avatar", Rails.root + 'spec/fixtures/images/ruby.png')
     select "Beginner", from: :user_workout_preferences_experience
     select "Strength", from: :user_workout_preferences_exercise_type
-    select "Early Morining (6-8am)", from: :user_workout_preferences_prefered_time
+    select "Early Morning (6-8am)", from: :user_workout_preferences_prefered_time
     click_button("Sign Up")
     visit user_path
     page.should have_content("Thanks for signing up")
