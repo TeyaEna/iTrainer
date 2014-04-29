@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140428153055) do
+ActiveRecord::Schema.define(version: 20140429100941) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,9 +23,7 @@ ActiveRecord::Schema.define(version: 20140428153055) do
     t.integer  "age"
     t.string   "gender"
     t.text     "about_me"
-    t.string   "exercise_type"
     t.integer  "location_id"
-    t.string   "experience"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "avatar_file_name"
@@ -47,5 +45,13 @@ ActiveRecord::Schema.define(version: 20140428153055) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+
+  create_table "workout_preferences", force: true do |t|
+    t.string  "experience"
+    t.string  "exercise_type"
+    t.string  "prefered_times"
+    t.string  "prefered_place"
+    t.integer "user_id"
+  end
 
 end
