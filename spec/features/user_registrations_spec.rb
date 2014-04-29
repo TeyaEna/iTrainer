@@ -14,5 +14,18 @@ feature "User Registration" do
     select "18", from: :user_age
     select "Male", from: :user_gender
     click_button("Sign up")
+    visit edit_users_additional_path(user)
+  end
+
+  scenario "filling in additional information to sign up form" do
+    visit edit_users_additional_path(user)
+    fill_in :user_about_me, with: user.about_me
+    attach_file("Avatar", Rails.root + 'spec/fixtures/images/ruby.png')
+    select "Beginner", from: :user_workout_preferences_experience
+    select "Strength", from: :user_workout_preferences_exercise_type
+    select "Early Morining (6-8am)", from: :user_workout_preferences_prefered_time
+    click_button("Sign Up")
+    visit user_path
+    page.should have_content("Thanks for signing up")
   end
 end

@@ -12,6 +12,10 @@ class User < ActiveRecord::Base
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/, :if => lambda {|obj|obj.step?("2nd step") }
   validates_with AttachmentPresenceValidator, :attributes => :avatar, :if => lambda {|obj|obj.step?("2nd step") }
 
+  has_one :workout_preference
+
+  accepts_nested_attributes_for :workout_preference
+
   def step?(current_step)
     self.step == current_step
   end

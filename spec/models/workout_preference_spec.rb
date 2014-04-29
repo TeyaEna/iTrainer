@@ -15,8 +15,8 @@ describe WorkoutPreference do
     end
 
     it "validates presence of prefered times" do
-      subject.prefered_times = ""
-      subject.should have(1).error_on(:prefered_times)
+      subject.prefered_time = ""
+      subject.should have(1).error_on(:prefered_time)
     end
 
   end
