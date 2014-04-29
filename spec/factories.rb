@@ -17,7 +17,7 @@ FactoryGirl.define do
     exercise_type "Compound"
     experience "Beginner"
     prefered_place "Hyde park"
-    prefered_times "Early Morning 6am-8am"
+    prefered_time "Early Morning 6am-8am"
     user
   end
 end

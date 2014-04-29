@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140429100941) do
+ActiveRecord::Schema.define(version: 20140429133611) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 20140429100941) do
   create_table "workout_preferences", force: true do |t|
     t.string  "experience"
     t.string  "exercise_type"
-    t.string  "prefered_times"
+    t.string  "prefered_time"
     t.string  "prefered_place"
     t.integer "user_id"
   end
