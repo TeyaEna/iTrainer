@@ -28,7 +28,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 gem 'devise'
 gem 'geocoder'
-gem 'paperclip', github: 'thoughtbot/paperclip'
+gem 'paperclip', git: 'https://github.com/thoughtbot/paperclip'
 
 group :test, :development do
   gem 'rspec-rails'
