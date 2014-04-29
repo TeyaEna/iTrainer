@@ -61,12 +61,6 @@ describe User do
       subject.should have(1).error_on(:last_name)
     end
 
-    it "validates presence of experience on create" do
-      subject.experience = ""
-      subject.step = "2nd step"
-      subject.should have(1).error_on(:experience)
-    end
-
     it "validates presence of about me on create" do
       subject.about_me = ""
       subject.step = "2nd step"
