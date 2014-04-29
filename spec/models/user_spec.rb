@@ -73,4 +73,14 @@ describe User do
       subject.should have(1).error_on(:about_me)
     end
   end
+
+  describe "#step?" do
+    it "returns true when the user step is equal to the argument" do
+      subject.step?("1st step").should eq true
+    end
+
+    it "returns false when the user step is not to the argument" do
+      subject.step?("2nd step").should eq false
+    end
+  end
 end
