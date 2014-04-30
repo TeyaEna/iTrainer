@@ -11,16 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140430203516) do
+ActiveRecord::Schema.define(version: 20140430220017) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "locations", force: true do |t|
-    t.string "address"
-    t.float  "latitude"
-    t.float  "longitude"
-  end
 
   create_table "users", force: true do |t|
     t.string   "first_name"
@@ -29,7 +23,6 @@ ActiveRecord::Schema.define(version: 20140430203516) do
     t.integer  "age"
     t.string   "gender"
     t.text     "about_me"
-    t.integer  "location_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "avatar_file_name"
@@ -47,6 +40,9 @@ ActiveRecord::Schema.define(version: 20140430203516) do
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.integer  "step",                   default: 1
+    t.string   "address"
+    t.float    "latitude"
+    t.float    "longitude"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
