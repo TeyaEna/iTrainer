@@ -12,6 +12,7 @@ FactoryGirl.define do
     screen_name "foobaz"
     about_me "I am a foo bar"
     avatar Rails.root.join("spec/fixtures/images/ruby.png").open
+    address "New York, NY"
   end
   factory :workout_preference do
     exercise_type "Compound"

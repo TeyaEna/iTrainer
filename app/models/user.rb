@@ -16,6 +16,9 @@ class User < ActiveRecord::Base
 
   accepts_nested_attributes_for :workout_preference
 
+  after_validation :geocode
+  geocoded_by :address
+  
   after_save :increment_step
 
   def step?(current_step)
