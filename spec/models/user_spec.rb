@@ -5,17 +5,17 @@ describe User do
 
   describe "validations" do
     it "validates the files can be attached" do
-      subject.step = "2nd step"
+      subject.step = 2
       subject.should have_attached_file(:avatar)
     end
 
     it "validates the presence of attachment" do
-      subject.step = "2nd step"
+      subject.step = 2
       subject.should validate_attachment_presence(:avatar)
     end
 
     it "validates the content type of the attachment" do
-      subject.step = "2nd step"
+      subject.step = 2
       subject.should validate_attachment_content_type(:avatar).
                 allowing('image/png', 'image/gif').
                 rejecting('text/plain', 'text/xml')
@@ -63,18 +63,18 @@ describe User do
 
     it "validates presence of about me on create" do
       subject.about_me = ""
-      subject.step = "2nd step"
+      subject.step = 2
       subject.should have(1).error_on(:about_me)
     end
   end
 
   describe "#step?" do
     it "returns true when the user step is equal to the argument" do
-      subject.step?("1st step").should eq true
+      subject.step?(1).should eq true
     end
 
     it "returns false when the user step is not to the argument" do
-      subject.step?("2nd step").should eq false
+      subject.step?(2).should eq false
     end
   end
 end
