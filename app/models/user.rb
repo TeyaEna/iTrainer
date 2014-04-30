@@ -16,11 +16,17 @@ class User < ActiveRecord::Base
 
   accepts_nested_attributes_for :workout_preference
 
+  after_save :increment_step
+
   def step?(current_step)
     self.step == current_step
   end
 
   def second_step
     step?(2)
+  end
+
+  def increment_step
+    increment(:step)
   end
 end

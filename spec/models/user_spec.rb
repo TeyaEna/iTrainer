@@ -88,4 +88,18 @@ describe User do
       subject.second_step.should eq false
     end
   end
+
+  describe "#increment_step" do
+    it "increments the step by 1" do
+      subject.increment_step
+      subject.step.should eq 2
+    end
+  end
+
+  describe "#callbacks" do
+    it "increments the step by 1 after saving" do
+      subject.save
+      subject.step.should eq 2
+    end
+  end
 end
