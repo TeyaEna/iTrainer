@@ -77,4 +77,15 @@ describe User do
       subject.step?(2).should eq false
     end
   end
+
+  describe "#second_step" do
+    it "returns true when step is equal to 2" do
+      subject.step = 2
+      subject.second_step.should eq true
+    end
+
+    it "returns false when step is equal to 1" do
+      subject.second_step.should eq false
+    end
+  end
 end
