@@ -28,7 +28,6 @@ feature "User Registration" do
     fill_in :user_workout_preferences_exercise_place, with: workout_preference.prefered_place
     click_button("Sign Up")
     visit users_path
-    save_and_open_page
     page.should have_content("Thanks for signing up")
   end
 
