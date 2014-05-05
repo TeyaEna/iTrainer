@@ -11,14 +11,14 @@ class UsersAdditionalController < ApplicationController
       redirect_to users_path
       flash[:success] = "Thanks for signing up"
     else
-      render "edit"
       flash[:error] = "There was an error on the form"
+      render :edit
     end
   end
 
   private
 
   def user_params
-    params.require(:user).permit(:about_me, workout_preference_attributes: [:exercise_type, :experience, :prefered_time])
+    params.require(:user).permit(:about_me, workout_preference_attributes: [:exercise_type, :experience, :prefered_time, :prefered_place])
   end
 end
