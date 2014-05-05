@@ -6,7 +6,7 @@ FactoryGirl.define do
     last_name "Bar"
     age 25
     gender "Male"
-    email "foo@bar.com"
+    sequence(:email) {|n| "fooz#{n}@bar.com" }
     password "foobar12"
     password_confirmation "foobar12"
     screen_name "foobaz"
