@@ -23,6 +23,17 @@
       </ul>
     </nav>
 
+    <% unless flash.empty? %>
+      <% flash.each do |name, msg| %>
+        <% name ? 'success' : 'warning' %>
+          <div class="alerts-box">
+            <div data-alert class="alert-box <%= name %> radius">
+              <%= "#{msg}!" %>
+            </div>
+          </div>
+      <% end %>
+    <% end %>
+
     <%= yield %>
     <%= javascript_include_tag "application" %>
   </body>
