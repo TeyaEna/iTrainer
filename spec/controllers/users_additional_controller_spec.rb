@@ -11,7 +11,7 @@ describe UsersAdditionalController do
   describe "GET #edit" do
     before do
       workout_preference_params = valid_workout_preference_params.merge(user_id: @user.id)
-      @user_params = valid_user_params.merge(workout_preference_attributes: workout_preference_params)
+      @user_params = valid_user_params.merge(workout_preferences: workout_preference_params)
     end
     it "shows the edit page with the correct params" do
       get :edit, id: @user.id
