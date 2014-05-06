@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
   after_validation :geocode
   geocoded_by :address
   
-  after_save :increment_step
+  after_create :increment_step
 
   def step?(current_step)
     self.step == current_step

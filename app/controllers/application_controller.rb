@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   private
 
   def after_sign_in_path_for(resource)
-    if resource.step?("2nd step")
+    if resource.step?(2)
       edit_users_additional_path(resource.id)
     else
       users_path
