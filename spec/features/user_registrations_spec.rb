@@ -28,7 +28,7 @@ feature "User Registration" do
     fill_in :user_workout_preferences_exercise_place, with: workout_preference.prefered_place
     click_button("Sign Up")
     visit users_path
-    page.should have_content("Thanks for signing up")
+    page.has_css?("div.alert.alert-error", :text => "Thanks for signing up!")
   end
 
   scenario "filling in additional information with missing data in some fields" do
@@ -37,6 +37,6 @@ feature "User Registration" do
     select "Beginner", from: :user_workout_preferences_experience
     click_button("Sign Up")
     visit edit_users_additional_path(user)
-    page.should have_content("There was an error on the form")
+    page.has_css?("div.alert.alert-error", :text => "There was an error on the form")
   end
 end
