@@ -9,7 +9,7 @@ describe UsersAdditionalController do
   end
 
   describe "GET #edit" do
-    it "shows the edit page with the correct params" do
+    it "shows the edit page with the correct params are passed in" do
       get :edit, id: @user.id
       response.should be_ok
     end
@@ -43,8 +43,8 @@ describe UsersAdditionalController do
       }.to change(WorkoutPreference, :count ).by(1)
     end
 
-    it "renders edit page when the params are incorrect" do
-      put :update, { id: @user.id, user: {} }
+    it "renders the edit page when the params are missing" do
+      put :update, { id: @user.id, user: { about_me: "" } }
       response.should render_template("edit")
     end
   end

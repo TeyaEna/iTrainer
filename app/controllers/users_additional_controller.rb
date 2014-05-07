@@ -23,7 +23,9 @@ class UsersAdditionalController < ApplicationController
   private
 
   def workout_params
-    params[:user][:workout_preferences].permit(:exercise_type, :experience, :prefered_time, :prefered_place, :user_id)
+    unless params[:user][:workout_preferences].nil?
+     params[:user][:workout_preferences].permit(:exercise_type, :experience, :prefered_time, :prefered_place, :user_id)
+    end
   end 
 
   def user_params
