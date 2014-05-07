@@ -6,6 +6,7 @@ describe UsersAdditionalController do
 
   before do
     @user = User.create!(valid_user_params)
+    sign_in(:user, @user)
   end
 
   describe "GET #edit" do
@@ -23,6 +24,17 @@ describe UsersAdditionalController do
       it "renders a 404 page" do
         get :edit, id: 5000
         response.should render_template(file: "#{Rails.root}/public/404.html")
+      end
+    end
+
+    context "when a user tries to access an edit page which doesn't belong to them" do
+      before do
+        @user_two = FactoryGirl.create(:user)
+        sign_in(:user, @user_two)
+      end
+      it "redirects the user to a 404 a page" do
+        get :edit, id: @user.id
+        response.status.should be(404)
       end
     end
   end

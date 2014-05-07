@@ -1,4 +1,5 @@
 class UsersAdditionalController < ApplicationController
+  before_filter :authenticate_user!, :authorization
 
   def edit
     begin
@@ -30,5 +31,12 @@ class UsersAdditionalController < ApplicationController
 
   def user_params
     params.require(:user).permit(:about_me, workout_preference_attributes: [:exercise_type, :experience, :prefered_time, :prefered_place, :user_id])
+  end
+
+  def authorization
+    authorized = UserAuthorization.new(current_user.id, params[:id]).access?
+    unless !authorized
+      render status: 404
+    end
   end
 end

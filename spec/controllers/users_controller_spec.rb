@@ -4,6 +4,10 @@ describe UsersController do
   let(:user_params) { FactoryGirl.attributes_for(:user) }
   let(:user) { FactoryGirl.create(:user) }
 
+  before do
+    sign_in(:user, user)
+  end
+
   describe "GET #index" do
     it "responds with an 200 OK" do
       get :index

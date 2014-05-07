@@ -18,25 +18,31 @@ feature "User Registration" do
     visit edit_users_additional_path(user)
   end
 
-  scenario "filling in additional information to sign up form" do
-    visit edit_users_additional_path(user)
-    fill_in :user_about_me, with: user.about_me
-    attach_file("Avatar", Rails.root + 'spec/fixtures/images/ruby.png')
-    select "Beginner", from: :user_workout_preferences_experience
-    select "Strength", from: :user_workout_preferences_exercise_type
-    select "Early Morning (6-8am)", from: :user_workout_preferences_prefered_time
-    fill_in :user_workout_preferences_exercise_place, with: workout_preference.prefered_place
-    click_button("Sign Up")
-    visit users_path
-    page.has_css?("div.alert.alert-error", :text => "Thanks for signing up!")
-  end
+  context "second step of the sign up form" do
+    before do
+      login_as(user, :scope => :user)
+    end
 
-  scenario "filling in additional information with missing data in some fields" do
-    visit edit_users_additional_path(user)
-    fill_in :user_about_me, with: user.about_me
-    select "Beginner", from: :user_workout_preferences_experience
-    click_button("Sign Up")
-    visit edit_users_additional_path(user)
-    page.has_css?("div.alert.alert-error", :text => "There was an error on the form")
+    scenario "filling in additional information to sign up form" do
+      visit edit_users_additional_path(user)
+      fill_in :user_about_me, with: user.about_me
+      attach_file("Avatar", Rails.root + 'spec/fixtures/images/ruby.png')
+      select "Beginner", from: :user_workout_preferences_experience
+      select "Strength", from: :user_workout_preferences_exercise_type
+      select "Early Morning (6-8am)", from: :user_workout_preferences_prefered_time
+      fill_in :user_workout_preferences_exercise_place, with: workout_preference.prefered_place
+      click_button("Sign Up")
+      visit users_path
+      page.has_css?("div.alert.alert-error", :text => "Thanks for signing up!")
+    end
+
+    scenario "filling in additional information with missing data in some fields" do
+      visit edit_users_additional_path(user)
+      fill_in :user_about_me, with: user.about_me
+      select "Beginner", from: :user_workout_preferences_experience
+      click_button("Sign Up")
+      visit edit_users_additional_path(user)
+      page.has_css?("div.alert.alert-error", :text => "There was an error on the form")
+    end
   end
 end
