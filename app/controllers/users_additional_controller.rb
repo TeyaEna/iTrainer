@@ -1,7 +1,11 @@
 class UsersAdditionalController < ApplicationController
 
   def edit
-    @user = User.find(params[:id])
+    begin
+      @user = User.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+      render file: "#{Rails.root}/public/404", status: 404
+    end
   end
 
   def update
