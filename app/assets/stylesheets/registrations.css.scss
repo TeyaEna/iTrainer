@@ -1,6 +1,37 @@
-.sign-up-form{
-  position: relative;
-  top: 200px;
-  left: 600px;
-  width: 400px;
+#sign-up{
+  background: -webkit-gradient(radial, center center, 0, center center, 460, from(#58c5e4), to(#4db4dc));
+  text-alin: letf;
+  margin-left: 50px;
+}
+
+.logo-sign-up {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  margin-left: -10px;
+  max-width: 30%;
+  min-width: 20em;
+}
+
+.signup-fields{
+  padding-top: 15px;
+}
+
+.signin-panel p {
+  font-size: 15px;
+  font-weight: 200;
+  margin-left: 30%;
+}
+
+.signup-panel .button {
+  margin-left: 40%;
+
+}
+
+.signup-panel {
+  background: white;
+  border-radius: 5px;
+  padding: 15px;
+  width: 100%;
+  min-width: 20em;
+
 }

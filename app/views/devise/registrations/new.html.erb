@@ -4,61 +4,45 @@
   </div>
   <div class="small-6 large-centered columns">
     <div class="row">
-    <div class="signup-panel">
-        <form>
-              <h4>Create your shiny account</h4>
+      <div class="signup-panel">
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), :multipart => true) do |f| %>
+          <h4>Create your shiny account</h4>
           <div class="signup-fields">
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), :multipart => true) do |f| %>
-  <%= devise_error_messages! %>
-
-  <div><%= f.label :first_name %><br />
-  <%= f.text_field :first_name, autofocus: true %></div>
-
-  <div><%= f.label :last_name %><br />
-  <%= f.text_field :last_name, autofocus: true %></div>
-
-  <div><%= f.label :screen_name %><br />
-  <%= f.text_field :screen_name, autofocus: true %></div>
-
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, autofocus: true %></div>
-
-  <div><%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %></div>
-
-  <div><%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %></div>
-
-  <div><%= f.label :age %><br />
-  <%= f.select :age, 18..99, autofocus: true %></div>
-
-  <div><%= f.label :gender %><br />
-    <%= f.select :gender, ["Male", "Female", "Undefined"], autocomplete: "off" %></div>
-
-  <%= f.label :about_me %>
-  <%= f.text_area :about_me %><br>
-  
-  <%= f.label :avatar %>
-  <%= f.file_field :avatar %>
-
-  <%= f.label :address %>
-  <%= f.text_field :address %>
-
-  <%= f.label :exercise_type %>
-  <%= f.select :exercise_type, exercise_type_list, autocomplete: "off" %>
-
-  <%= f.label :experience %>
-  <%= f.select :experience, experience_types_list, autocomplete: "off" %>
-
-  <%= f.label :prefered_place %>
-  <%= f.text_field :prefered_place %>
-
-  <%= f.label :prefered_time %>
-  <%= f.select :prefered_time, prefered_times_list %>
-
-  <div><%= f.submit "Sign up", class: "button" %></div>
-<% end %>
-</form>
-
-<%= render "devise/shared/links" %>
-</div>
+            <%= devise_error_messages! %>
+            <%= f.label :first_name %><br />
+              <%= f.text_field :first_name, autofocus: true %>
+            <%= f.label :last_name %><br />
+              <%= f.text_field :last_name, autofocus: true %>
+            <%= f.label :screen_name %><br />
+              <%= f.text_field :screen_name, autofocus: true %>
+            <%= f.label :email %><br />
+              <%= f.email_field :email, autofocus: true %>
+            <%= f.label :password %><br />
+              <%= f.password_field :password, autocomplete: "off" %>
+            <%= f.label :password_confirmation %><br />
+              <%= f.password_field :password_confirmation, autocomplete: "off" %>
+            <%= f.label :age %><br />
+              <%= f.select :age, 18..99, autofocus: true %>
+            <%= f.label :gender %><br />
+              <%= f.select :gender, ["Male", "Female", "Undefined"], autocomplete: "off" %>
+            <%= f.label :about_me %>
+              <%= f.text_area :about_me %><br>
+            <%= f.label :avatar %>
+              <%= f.file_field :avatar %>
+            <%= f.label :address %>
+              <%= f.text_field :address %>
+            <%= f.label :exercise_type %>
+              <%= f.select :exercise_type, exercise_type_list, autocomplete: "off" %>
+            <%= f.label :experience %>
+              <%= f.select :experience, experience_types_list, autocomplete: "off" %>
+            <%= f.label :prefered_place %>
+              <%= f.text_field :prefered_place %>
+            <%= f.label :prefered_time %>
+              <%= f.select :prefered_time, prefered_times_list %>
+            <%= f.submit "Sign up", class: "button" %>
+          <% end %>
+        <%= render "devise/shared/links" %>
+      </div>
+    </div>
+  </div>
+</body>
