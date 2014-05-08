@@ -19,4 +19,8 @@ class User < ActiveRecord::Base
 
   before_validation :geocode
   geocoded_by :address
+
+  def self.except_user(user)
+    where.not(id: user)
+  end
 end
