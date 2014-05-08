@@ -7,6 +7,9 @@
   <%= form.label :avatar %>
   <%= form.file_field :avatar %>
 
+  <%= form.label :address %>
+  <%= form.text_field :address %>
+
   <%= form.fields_for :workout_preferences do |wp| %>
     <%= wp.label :exercise_type %>
     <%= wp.select :exercise_type, exercise_type_list, autocomplete: "off" %>
