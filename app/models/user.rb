@@ -4,32 +4,18 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  validates :first_name, :last_name,:gender,:age,:screen_name, presence: true
+  validates :first_name, :last_name,:gender,:age,:screen_name, :address, presence: true
   validates :first_name, :last_name , format: {with: /\A[A-Za-z]+\z/}
-  validates :about_me, presence: true, :if => :second_step
+  validates :about_me, presence: true
 
   has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
-  validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/, :if => :second_step
-  validates_with AttachmentPresenceValidator, :attributes => :avatar, :if => :second_step
+  validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
+  validates_with AttachmentPresenceValidator, :attributes => :avatar
 
   has_one :workout_preference
 
   accepts_nested_attributes_for :workout_preference
 
-  after_validation :geocode
+  before_validation :geocode
   geocoded_by :address
-  
-  after_create :increment_step
-
-  def step?(current_step)
-    self.step == current_step
-  end
-
-  def second_step
-    step?(2)
-  end
-
-  def increment_step
-    increment(:step)
-  end
 end
