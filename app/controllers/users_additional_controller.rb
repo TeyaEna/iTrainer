@@ -2,11 +2,7 @@ class UsersAdditionalController < ApplicationController
   before_filter :authenticate_user!, :authorization
 
   def edit
-    begin
-      @user = User.find(params[:id])
-    rescue ActiveRecord::RecordNotFound
-      render file: "#{Rails.root}/public/404", status: 404
-    end
+    @user = User.find(params[:id])
   end
 
   def update
@@ -35,8 +31,8 @@ class UsersAdditionalController < ApplicationController
 
   def authorization
     authorized = UserAuthorization.new(current_user.id, params[:id]).access?
-    unless !authorized
-      render status: 404
+    if !authorized
+      render :file => "#{Rails.root}/public/404", :layout => false, :status => :not_found
     end
   end
 end
