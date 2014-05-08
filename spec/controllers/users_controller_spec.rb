@@ -14,9 +14,18 @@ describe UsersController do
       response.should be_ok
     end
 
-    it "returns an array of users" do
-      get :index
-      assigns(:user).should include(user)
+    context "all users except current user" do
+      it "returns an array of users except the current user" do
+        user_two = FactoryGirl.create(:user, first_name: "Baz", email: "baz@gmail.com")
+        get :index
+        assigns(:users).should include(user_two)
+      end
+
+      it "does not include the current user" do
+        user_two = FactoryGirl.create(:user, first_name: "Baz", email: "baz@gmail.com")
+        get :index
+        assigns(:users).should_not include(user)
+      end
     end
   end
 end

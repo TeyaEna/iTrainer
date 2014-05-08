@@ -77,4 +77,18 @@ describe User do
       subject.should have(1).error_on(:prefered_time)
     end
   end
+
+  describe "scopes" do
+    context "return all users except the current user" do
+      before do
+        @user_two = FactoryGirl.create(:user, first_name: "Baz", email: "baz@gmail.com")
+        subject { FactoryGirl.create(:user) }
+      end
+      describe "#except_user" do
+        it "returns all users execpt the current user" do
+          User.except_user(subject).should eq([ @user_two ])
+        end
+      end
+    end
+  end
 end
