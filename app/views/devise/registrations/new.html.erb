@@ -2,7 +2,7 @@
 <h2>Sign up</h2>
 </div>
 <div class="sign-up-form">
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), :multipart => true) do |f| %>
   <%= devise_error_messages! %>
 
   <div><%= f.label :first_name %><br />
@@ -28,6 +28,29 @@
 
   <div><%= f.label :gender %><br />
     <%= f.select :gender, ["Male", "Female", "Undefined"], autocomplete: "off" %></div>
+
+  <%= f.label :about_me %>
+  <%= f.text_area :about_me %><br>
+  
+  <%= f.label :avatar %>
+  <%= f.file_field :avatar %>
+
+  <%= f.label :address %>
+  <%= f.text_field :address %>
+
+  <%= f.fields_for :workout_preferences do |wp| %>
+    <%= wp.label :exercise_type %>
+    <%= wp.select :exercise_type, exercise_type_list, autocomplete: "off" %>
+
+    <%= wp.label :experience %>
+    <%= wp.select :experience, experience_types_list, autocomplete: "off" %>
+
+    <%= wp.label :exercise_place %>
+    <%= wp.text_field :exercise_place %>
+
+    <%= wp.label :prefered_time %>
+    <%= wp.select :prefered_time, prefered_times_list %>
+  <% end %>
 
   <div><%= f.submit "Sign up", class: "button" %></div>
 <% end %>
