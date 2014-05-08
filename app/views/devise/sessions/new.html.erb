@@ -1,24 +1,38 @@
-<div class="sign-in-title">
-  <h2>Welcome to iTrainer</h2>
-  <h4>A platform for finding your gym partner </h4>
-</div>
+<body id="sign-in">
+  <div class="logo-sign-in">
+    <%=image_tag("logo.png", alt: "iTrainer logo") %>
+  </div>
+  <div class="sign-in-title">
+    <h2>Welcome to iTrainer</h2>
+    <h4>A platform for finding your gym partner </h4>
+  </div>
  
-<div class="sign-in-form">
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-    <div><%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %></div>
 
-    <div><%= f.label :password %><br />
-      <%= f.password_field :password, autocomplete: "off" %></div>
+  <div class="small-4 large-centered columns">
+    <div class="row">
+    <div class="signin-panel">
+        <form>
+          <div class="signin-fields">
+            <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+            <%= f.email_field :email, autofocus: true, placeholder: "email"  %>
+            <%= f.password_field :password, autocomplete: "off", placeholder: "password" %>
+            <% if devise_mapping.rememberable? -%>
+            <%= f.check_box :remember_me %>
+            <%= f.label :remember_me, :style => "display:inline"%>
+          </div>
+            <% end -%>
+         </form>
+            <%= f.submit "Sign in", class: "button" %>
+            <p>Don't ave an account yet? <a href="#"><%= render "devise/shared/links" %> </a></p>
 
-    <% if devise_mapping.rememberable? -%>
-      <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
-    <% end -%>
-
-    <div><%= f.submit "Sign in", class: "button" %></div>
-  <% end %>
-  <div class="links">
-    <%= render "devise/shared/links" %>
+          <% end %>
+      </div>
   </div>
 </div>
+
+
+
+
+
+</body>
 

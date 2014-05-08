@@ -1,7 +1,13 @@
-<div class="sign-in-title">
-<h2>Sign up</h2>
-</div>
-<div class="sign-up-form">
+<body id="sign-up">
+  <div class="logo-sign-up">
+    <%=image_tag("logo.png", alt: "iTrainer logo") %>
+  </div>
+  <div class="small-6 large-centered columns">
+    <div class="row">
+    <div class="signup-panel">
+        <form>
+              <h4>Create your shiny account</h4>
+          <div class="signup-fields">
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), :multipart => true) do |f| %>
   <%= devise_error_messages! %>
 
@@ -52,6 +58,7 @@
 
   <div><%= f.submit "Sign up", class: "button" %></div>
 <% end %>
+</form>
 
 <%= render "devise/shared/links" %>
 </div>
