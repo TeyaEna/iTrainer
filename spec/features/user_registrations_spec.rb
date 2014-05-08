@@ -2,8 +2,7 @@ require 'spec_helper'
 
 feature "User Registration" do
   let(:user) { FactoryGirl.create(:user) }
-  let(:workout_preference) { FactoryGirl.create(:workout_preference) }
- 
+
   scenario "sign up with corret data" do
     visit new_user_registration_path
     fill_in :user_first_name, with: user.first_name
@@ -16,10 +15,10 @@ feature "User Registration" do
     select "Male", from: :user_gender
     fill_in :user_about_me, with: user.about_me
     attach_file("Avatar", Rails.root + 'spec/fixtures/images/ruby.png')
-    select "Beginner", from: :user_workout_preferences_experience
-    select "Strength", from: :user_workout_preferences_exercise_type
-    select "Early Morning (6-8am)", from: :user_workout_preferences_prefered_time
-    fill_in :user_workout_preferences_exercise_place, with: workout_preference.prefered_place
+    select "Beginner", from: :user_experience
+    select "Strength", from: :user_exercise_type
+    select "Early Morning (6-8am)", from: :user_prefered_time
+    fill_in :user_prefered_place, with: user.prefered_place
     fill_in :user_address, with: "New York, NY" 
     click_button("Sign up")
     visit users_path
@@ -35,8 +34,8 @@ feature "User Registration" do
     fill_in :user_password_confirmation, with: user.password_confirmation
     fill_in :user_about_me, with: user.about_me
     attach_file("Avatar", Rails.root + 'spec/fixtures/images/ruby.png')
-    select "Early Morning (6-8am)", from: :user_workout_preferences_prefered_time
-    fill_in :user_workout_preferences_exercise_place, with: workout_preference.prefered_place
+    select "Early Morning (6-8am)", from: :user_prefered_time
+    fill_in :user_prefered_place, with: user.prefered_place
     fill_in :user_address, with: "New York, NY" 
     click_button("Sign up")
     visit new_user_registration_path

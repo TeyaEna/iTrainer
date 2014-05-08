@@ -38,19 +38,17 @@
   <%= f.label :address %>
   <%= f.text_field :address %>
 
-  <%= f.fields_for :workout_preferences do |wp| %>
-    <%= wp.label :exercise_type %>
-    <%= wp.select :exercise_type, exercise_type_list, autocomplete: "off" %>
+  <%= f.label :exercise_type %>
+  <%= f.select :exercise_type, exercise_type_list, autocomplete: "off" %>
 
-    <%= wp.label :experience %>
-    <%= wp.select :experience, experience_types_list, autocomplete: "off" %>
+  <%= f.label :experience %>
+  <%= f.select :experience, experience_types_list, autocomplete: "off" %>
 
-    <%= wp.label :exercise_place %>
-    <%= wp.text_field :exercise_place %>
+  <%= f.label :prefered_place %>
+  <%= f.text_field :prefered_place %>
 
-    <%= wp.label :prefered_time %>
-    <%= wp.select :prefered_time, prefered_times_list %>
-  <% end %>
+  <%= f.label :prefered_time %>
+  <%= f.select :prefered_time, prefered_times_list %>
 
   <div><%= f.submit "Sign up", class: "button" %></div>
 <% end %>

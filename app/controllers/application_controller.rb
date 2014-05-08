@@ -13,7 +13,12 @@ class ApplicationController < ActionController::Base
   end
 
   def configure_permitted_parameters
-    [:first_name, :last_name, :screen_name, :gender, :age, :about_me, :address, :avatar, :latitude, :longitude, workout_preference_attributes: [:exercise_type, :experience, :prefered_time, :prefered_place, :user_id] ].each do |attribute|
+    [:first_name, :last_name, 
+      :screen_name, :gender, :age, 
+      :about_me, :address, 
+      :avatar, :latitude, :longitude, 
+      :exercise_type, :experience, 
+      :prefered_time, :prefered_place ].each do |attribute|
       devise_parameter_sanitizer.for(:sign_up) << attribute
     end
   end
