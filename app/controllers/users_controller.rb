@@ -2,6 +2,6 @@ class UsersController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-    @users = User.except_user(current_user.id).near(current_user.address)
+    @users = User.except_user(current_user.id).near(current_user.address).gender(params[:gender])
   end
 end
