@@ -80,13 +80,26 @@ describe User do
 
   describe "scopes" do
     context "return all users except the current user" do
+      
       before do
-        @user_two = FactoryGirl.create(:user, first_name: "Baz", email: "baz@gmail.com")
         subject { FactoryGirl.create(:user) }
+        @user_two = FactoryGirl.create(:user, first_name: "Baz", email: "baz@gmail.com", gender: "Female")
       end
+
       describe "#except_user" do
         it "returns all users execpt the current user" do
           User.except_user(subject).should eq([ @user_two ])
+        end
+      end
+
+      context "based on gender" do
+        before do
+
+        end
+        describe "#gender" do
+          it "returns all users execpt the current user" do
+            User.gender("Female").should eq([ @user_two ])
+          end
         end
       end
     end

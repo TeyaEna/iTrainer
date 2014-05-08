@@ -23,4 +23,8 @@ class User < ActiveRecord::Base
   def self.except_user(user)
     where.not(id: user)
   end
+
+  def self.gender(gender) 
+    where(gender: gender) if gender.present?
+  end
 end
