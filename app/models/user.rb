@@ -19,12 +19,11 @@ class User < ActiveRecord::Base
 
   before_validation :geocode
   geocoded_by :address
+  
+  scope :gender, lambda { |gender| where(gender: gender) if gender.present? }
 
   def self.except_user(user)
     where.not(id: user)
   end
 
-  def self.gender(gender) 
-    where(gender: gender) if gender.present?
-  end
 end
