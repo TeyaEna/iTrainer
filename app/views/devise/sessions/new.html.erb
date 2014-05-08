@@ -14,12 +14,13 @@
             <%= f.email_field :email, autofocus: true, placeholder: "email"  %>
             <%= f.password_field :password, autocomplete: "off", placeholder: "password" %>
             <% if devise_mapping.rememberable? -%>
-            <%= f.check_box :remember_me %>
-            <%= f.label :remember_me, :style => "display:inline"%>
+              <%= f.check_box :remember_me %>
+              <%= f.label :remember_me, :style => "display:inline"%>
+            <% end %>
           </div>
           <%= f.submit "Sign in", class: "button" %>
-          <p>Don't have an account yet? <a href="#"><%= render "devise/shared/links" %> </a></p>
-        <% end -%>
+        <% end %>
+        <p>Don't have an account yet? <a href="#"><%= render "devise/shared/links" %> </a></p>
       </div>
     </div>
   </div>
