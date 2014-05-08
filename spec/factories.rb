@@ -13,13 +13,10 @@ FactoryGirl.define do
     about_me "I am a foo bar"
     avatar Rails.root.join("spec/fixtures/images/ruby.png").open
     address "New York, NY"
-  end
-  factory :workout_preference do
     exercise_type "Compound"
     experience "Beginner"
     prefered_place "Hyde park"
     prefered_time "Early Morning 6am-8am"
-    user
   end
 end
 
