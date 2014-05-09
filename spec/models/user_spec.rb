@@ -83,7 +83,7 @@ describe User do
       
       before do
         subject { FactoryGirl.create(:user) }
-        @user_two = FactoryGirl.create(:user, first_name: "Baz", email: "baz@gmail.com", gender: "Female")
+        @user_two = FactoryGirl.create(:user, first_name: "Baz", email: "baz@gmail.com", gender: "Female", age: 18)
       end
 
       describe "#except_user" do
@@ -93,12 +93,24 @@ describe User do
       end
 
       context "based on gender" do
-        before do
-
-        end
         describe "#gender" do
-          it "returns all users execpt the current user" do
-            User.gender("Female").should eq([ @user_two ])
+          it "returns all the users who match based on gender" do
+            User.by_gender("Female").should eq([ @user_two ])
+          end
+        end
+      end
+
+      context "based on age" do
+        before do
+          @user_three = FactoryGirl.create(:user, age: 29)
+        end
+        describe "#age" do
+          it "returns all the users who match based on age" do
+            User.by_age('18..35').should eq([ @user_two, @user_three ])
+          end
+
+          it "returns all the users who match based on age" do
+            User.by_age('64').should eq([ ])
           end
         end
       end
