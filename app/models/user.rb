@@ -20,10 +20,21 @@ class User < ActiveRecord::Base
   before_validation :geocode
   geocoded_by :address
   
-  scope :gender, lambda { |gender| where(gender: gender) if gender.present? }
+  scope :by_gender,   lambda { |gender| where(gender: gender) }
+  scope :by_age,      lambda { |age| where("age IN (?)", age) }
+  scope :except_user, lambda { |user| where.not(id: user) }
+  
+  def self.users_address(id)
+    self.find(id).address
+  end
 
-  def self.except_user(user)
-    where.not(id: user)
+  def self.filtered_by(params)
+    scope =  self.all
+    scope.except_user(params[:user_id])  
+    scope.by_age(params[:age]) if params[:age]
+    scope.by_gender( params[:gender]) if params[:gender]
+    scope.near(users_address(params[:user_id]))
+    scope
   end
 
 end

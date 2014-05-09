@@ -2,6 +2,6 @@ class Users::SearchesController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-    @users = User.except_user(current_user.id).gender(params[:gender]).age(params[:gender])
+    @users = User.filtered_by(params.merge(user_id: current_user.id))
   end
 end
