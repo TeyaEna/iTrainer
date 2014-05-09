@@ -7,14 +7,16 @@
   <% end %>
 </div>
 
-<div class="users-list">
-  <ul>
-    <% @users.each do |user| %>
-      <li><%= user.screen_name %></li>
-      <li><%= image_tag(user.avatar) %></li>
-      <li><%= user.about_me %></li>
-      <li><%= user.gender %></li>
-      <li><%= user.address %></li>
-    <% end %>
-  </ul>
-</div>
+<% @users.each do |user| %>
+  <div class="users-list">
+    <div class="large-3 columns">
+      <div class="panel">
+      <%= image_tag user.avatar(:medium) %>
+      <%= user.screen_name %><br>
+      <%= user.about_me %><br>
+      <%= user.gender %><br>
+      <%= user.address %>
+      </div>
+    </div>
+  </div>
+<% end %>
