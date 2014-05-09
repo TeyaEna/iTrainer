@@ -39,16 +39,6 @@ describe UsersController do
           assigns(:users).should eq([ @user_one, @user_two ])
         end
       end
-
-      context "based on the gender provided by the user" do
-        before do
-          @user_f = FactoryGirl.create(:user, address: "N16", gender: "Female")
-        end
-        it "returns only the gender sent in the params" do
-          post :index, gender: "Female"
-          assigns(:users).should eq([ @user_f ])
-        end
-      end
     end
   end
 end

@@ -17,4 +17,17 @@ feature "User listing" do
       page.should_not have_content(user.screen_name)
     end
   end
+
+  context "searching based on criteria" do
+    before do
+      @user_two = FactoryGirl.create(:user, gender: "Female", screen_name: "Fooman")
+    end
+    scenario "lists only female users" do
+      visit users_path
+      select "Female", from: 'gender'
+      click_button("Filter")
+      page.should have_content(@user_two.screen_name)
+      page.should_not have_content(user.screen_name)
+    end 
+  end
 end
