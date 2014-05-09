@@ -1,18 +1,37 @@
-<div class="user-filter">
+
+  <!-- Side Bar -->
+ 
+        <div class="large-2 small-12 columns">
   <%= form_tag(users_searches_path, method: 'get') do %>
-    <%= label_tag :gender %>
+    <%= label_tag :gender%>
     <%= select_tag(:gender, options_for_select([ "Male", "Female", "Other"]) ) %>
     <% params[:gender] %>
 
     <%= label_tag :age %>
     <%= select_tag(:age, options_for_select({ '18-35' => 18..35, '35-49' => 35..49, '50-64' =>  50..64, '65+' => 65  }))%>
-    <%= submit_tag('Filter')%>
+    <div class="filter-button">
+      <%= submit_tag('Filter')%>
+    </div> 
   <% end %>
-</div>
+ 
+          <div class="hide-for-small panel">
+            <h3>Header</h3>
+            <h5 class="subheader">Risus ligula, aliquam nec fermentum vitae, sollicitudin eget urna. Donec dignissim nibh fermentum odio ornare sagittis.
+            </h5>
+          </div>
+        </div>
+ 
+    <!-- End Side Bar -->
+ 
+ 
+    <!-- Thumbnails -->
+
+
+
 
 <% @users.each do |user| %>
   <div class="users-list">
-    <div class="large-3 columns">
+            <div class="large-4 small-8 columns">
       <div class="panel">
       <%= image_tag user.avatar(:medium) %>
       <%= user.screen_name %><br>
@@ -23,3 +42,37 @@
     </div>
   </div>
 <% end %>
+ 
+    <!-- End Thumbnails -->
+ 
+          </div>
+        </div>
+      </div>
+ 
+ 
+    <!-- Footer -->
+ 
+      <footer class="row">
+        <div class="large-12 columns"><hr />
+          <div class="row">
+ 
+            <div class="large-6 columns">
+              <p>© Copyright no one at all. Go to town.</p>
+            </div>
+ 
+            <div class="large-6 columns">
+              <ul class="inline-list right">
+                <li><a href="#">Link 1</a></li>
+                <li><a href="#">Link 2</a></li>
+                <li><a href="#">Link 3</a></li>
+                <li><a href="#">Link 4</a></li>
+              </ul>
+            </div>
+ 
+          </div>
+        </div>
+      </footer>
+ 
+    <!-- End Footer -->
+
+    
