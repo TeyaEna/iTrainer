@@ -20,7 +20,7 @@ feature "User listing" do
 
   context "searching based on criteria" do
     before do
-      @user_two = FactoryGirl.create(:user, gender: "Female", screen_name: "Fooman", age: 21)
+      @user_two = FactoryGirl.create(:user, gender: "Female", screen_name: "Fooman")
     end
     scenario "lists only female users" do
       visit users_path
@@ -38,10 +38,19 @@ feature "User listing" do
       page.should have_content(@user_two.screen_name)
     end
 
-    scenario "list only users within an age range and gender" do
+    scenario "lists only users with a given experience level" do
+      visit users_path
+      select "Beginner", from: 'experience'
+      click_button("Filter")
+      visit users_searches_path
+      page.should have_content(@user_two.screen_name)
+    end
+
+    scenario "list only users within an age range, gender and experience level" do
       visit users_path
       select "18-35", from: 'age'
       select "Female", from: 'gender'
+      select "Beginner", from: 'experience'
       click_button("Filter")
       visit users_searches_path
       page.should have_content(@user_two.screen_name)

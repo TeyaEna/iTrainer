@@ -27,9 +27,15 @@ describe Users::SearchesController do
           assigns(:users).should eq([ @user_two])
         end
       end
-      context "searching based on both age and gender" do
+      context "searching based on age" do
+        it "returns back all the users within a given range" do
+          get 'index', experience: "Beginner"
+          assigns(:users).should eq([ @user_two])
+        end
+      end
+      context "searching based on both age, gender and experience level" do
         it "returns back all the users within a given range and gender" do
-          get 'index', age: 21, gender: "Female"
+          get 'index', age: 21, gender: "Female", experience: "Beginner"
           assigns(:users).should eq([ @user_two])
         end
       end

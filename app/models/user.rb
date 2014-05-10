@@ -18,6 +18,7 @@ class User < ActiveRecord::Base
   
   scope :by_gender,   lambda { |gender| where(gender: gender) }
   scope :except_user, lambda { |user| where.not(id: user) }
+  scope :experience_level, lambda { |experience| where(experience: experience) }
   
   def self.by_age(ages)
     ages = convert_age_params_into_an_array(ages)
@@ -30,6 +31,7 @@ class User < ActiveRecord::Base
     scope = scope.by_age(params[:age]) if params[:age]
     scope = scope.by_gender(params[:gender]) if params[:gender]
     scope = scope.near(users_address(params[:user_id]))
+    scope = scope.experience_level(params[:experience]) if params[:experience]
     scope
   end
 
