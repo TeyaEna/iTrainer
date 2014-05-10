@@ -10,16 +10,28 @@ describe Users::SearchesController do
       get 'index'
       response.should be_ok
     end
-  end
 
-  describe "#POST index" do
-    before do
-      @user_two = FactoryGirl.create(:user, gender: "Female")
-    end
-    context "searching based on gender" do
-      it "returns back all the female users" do
-        get 'index', gender: "Female"
-        assigns(:users).should eq([ @user_two])
+    context "based on given params" do
+      before do
+        @user_two = FactoryGirl.create(:user, gender: "Female", age: 21)
+      end
+      context "searching based on gender" do
+        it "returns back all the female users" do
+          get 'index', gender: "Female"
+          assigns(:users).should eq([ @user_two])
+        end
+      end
+      context "searching based on age" do
+        it "returns back all the users within a given range" do
+          get 'index', age: 21
+          assigns(:users).should eq([ @user_two])
+        end
+      end
+      context "searching based on both age and gender" do
+        it "returns back all the users within a given range and gender" do
+          get 'index', age: 21, gender: "Female"
+          assigns(:users).should eq([ @user_two])
+        end
       end
     end
   end

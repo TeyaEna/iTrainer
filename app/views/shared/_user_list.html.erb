@@ -9,6 +9,7 @@
 
     <%= label_tag :age %>
     <%= select_tag(:age, options_for_select({ '18-35' => 18..35, '35-49' => 35..49, '50-64' =>  50..64, '65+' => 65  }))%>
+    <% params[:age] %>
     <div class="filter-button">
       <%= submit_tag('Filter')%>
     </div> 
