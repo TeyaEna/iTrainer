@@ -15,6 +15,10 @@
     <%= select_tag(:experience, options_for_select(experience_types_list))%>
     <% params[:experience] %>
 
+    <%= label_tag :exercise %>
+    <%= select_tag(:exercise, options_for_select(exercise_type_list))%>
+    <% params[:exercise] %>
+
     <div class="filter-button">
       <%= submit_tag('Filter')%>
     </div> 

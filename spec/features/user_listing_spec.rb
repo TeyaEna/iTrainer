@@ -46,6 +46,14 @@ feature "User listing" do
       page.should have_content(@user_two.screen_name)
     end
 
+    scenario "lists only users with a given exercise type" do
+      visit users_path
+      select "Strength", from: 'exercise'
+      click_button("Filter")
+      visit users_searches_path
+      page.should have_content(@user_two.screen_name)
+    end
+
     scenario "list only users within an age range, gender and experience level" do
       visit users_path
       select "18-35", from: 'age'
