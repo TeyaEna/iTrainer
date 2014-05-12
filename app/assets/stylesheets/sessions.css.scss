@@ -30,19 +30,20 @@
 
 .signin-panel .button {
   margin-left: 40%;
-
 }
 
 .signin-panel {
   background: white;
   border-radius: 5px;
   padding: 15px;
-
 }
 
 .filter-button {
+  margin-bottom:100px;
+  margin-right:50px;
+  margin-left:200px;
+}
 
-margin-bottom:100px;
-margin-right:50px;
-margin-left:200px;
+#users-list {
+  background: -webkit-gradient(radial, center center, 0, center center, 460, from(#76cbe3), to(#4db4dc));  
 }

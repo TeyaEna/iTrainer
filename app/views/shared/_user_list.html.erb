@@ -1,88 +1,79 @@
-
+<body id="users-list">
+    <div class="row">
+    <div class="large-12 columns"> 
+    <div class="row">
+ 
   <!-- Side Bar -->
  
-        <div class="large-2 small-12 columns">
-  <%= form_tag(searches_path, method: 'get') do %>
-    <%= label_tag :gender%>
-    <%= select_tag(:gender, options_for_select([ "Male", "Female", "Other"]), :include_blank => true ) %>
-    <% params[:gender] %>
-
-    <%= label_tag :age %>
-    <%= select_tag(:age, options_for_select({ '18-35' => 18..35, '35-49' => 35..49, '50-64' =>  50..64, '65+' => 65}),:include_blank => true )%>
-    <% params[:age] %>
-
-    <%= label_tag :experience %>
-    <%= select_tag(:experience, options_for_select(experience_types_list), :include_blank => true)%>
-    <% params[:experience] %>
-
-    <%= label_tag :exercise %>
-    <%= select_tag(:exercise, options_for_select(exercise_type_list), :include_blank => true)%>
-    <% params[:exercise] %>
-
-    <div class="filter-button">
-      <%= submit_tag('Filter')%>
-    </div> 
-  <% end %>
+    <div class="large-4 small-12 columns">
  
-          <div class="hide-for-small panel">
-            <h3>Header</h3>
-            <h5 class="subheader">Risus ligula, aliquam nec fermentum vitae, sollicitudin eget urna. Donec dignissim nibh fermentum odio ornare sagittis.
-            </h5>
-          </div>
-        </div>
- 
-    <!-- End Side Bar -->
- 
- 
-    <!-- Thumbnails -->
+      <%= form_tag(searches_path, method: 'get') do %>
+      <div class="signup-panel">
+      <%= label_tag :gender%>
+      <%= select_tag(:gender, options_for_select([ "Male", "Female", "Other"]), :include_blank => true ) %>
+      <% params[:gender] %>
 
+      <%= label_tag :age %>
+      <%= select_tag(:age, options_for_select({ '18-35' => 18..35, '35-49' => 35..49, '50-64' =>  50..64, '65+' => 65}),:include_blank => true )%>
+      <% params[:age] %>
 
+      <%= label_tag :experience %>
+      <%= select_tag(:experience, options_for_select(experience_types_list), :include_blank => true)%>
+      <% params[:experience] %>
 
-
-<% @users.each do |user| %>
-  <div class="users-list">
-            <div class="large-4 small-8 columns">
-      <div class="panel">
-      <%= image_tag user.avatar(:medium) %>
-      <%= user.screen_name %><br>
-      <%= user.about_me %><br>
-      <%= user.gender %><br>
-      <%= user.address %>
+      <%= label_tag :exercise %>
+      <%= select_tag(:exercise, options_for_select(exercise_type_list), :include_blank => true)%>
+      <% params[:exercise] %>
+        <div class="filter-button">
+          <%= submit_tag('Filter')%>
+        </div> 
+      <% end %>
       </div>
     </div>
-  </div>
-<% end %>
+ 
+    <!-- End Side Bar -->
+
+    <!-- Thumbnails -->
+ 
+        <div class="large-8 columns">
+          <div class="row">
+            <div class="large-4 small-6 columns">
+              <% @users.each do |user| %> 
+              <a href="<%= user_path(user.id) %>">  
+              <%= image_tag user.avatar(:medium) %>           
+                <div class="panel">
+              <h5><%= user.screen_name %></h5>
+                <h6 class="subheader"><%= user.gender %><br>
+                <%= user.address %></h6></a>
+              </div>
+            <% end %>
+            </div>
+          </div>
  
     <!-- End Thumbnails -->
- 
+
           </div>
         </div>
       </div>
- 
- 
+    </body>  
+
     <!-- Footer -->
- 
-      <footer class="row">
+      <footer class="row" class="text-center">
         <div class="large-12 columns"><hr />
           <div class="row">
  
             <div class="large-6 columns">
-              <p>© Copyright no one at all. Go to town.</p>
+              <p>© Shaban Karumba &amp; Teja Kocjancic.</p>
             </div>
- 
-            <div class="large-6 columns">
-              <ul class="inline-list right">
-                <li><a href="#">Link 1</a></li>
-                <li><a href="#">Link 2</a></li>
-                <li><a href="#">Link 3</a></li>
-                <li><a href="#">Link 4</a></li>
-              </ul>
-            </div>
- 
+
+           </div>
           </div>
         </div>
       </footer>
  
     <!-- End Footer -->
+ 
+    </div>
+  </div>
+</body>   
 
-    
