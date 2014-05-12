@@ -15,6 +15,9 @@ class User < ActiveRecord::Base
 
   before_validation :geocode
   geocoded_by :address
+
+  has_many :sent_messages, class_name: "Message", foreign_key: "sender_id"
+  has_many :received_messages, class_name: "Message", foreign_key: "receiver_id"
   
   scope :by_gender,   lambda { |gender| where(gender: gender) }
   scope :except_user, lambda { |user| where.not(id: user) }
