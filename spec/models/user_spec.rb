@@ -137,6 +137,22 @@ describe User do
           end
         end
       end
+      context "filtered by all options" do
+        before do
+          user_attributes = FactoryGirl.attributes_for(:user)
+          @user = User.create(user_attributes)
+          @params = { user_id: @user.id }
+        end
+        describe "#filtered_by" do
+          it "returns all the users as no scopes have been applied" do
+            User.filtered_by(@params).should eq([ @user_two ])
+          end
+          it "returns the matching users when scopes are applied" do
+            @params = { user_id: @user.id, exercise: "Strength", experience_level: "Beginner", gender: "Female", age: "18-34" }
+            User.filtered_by(@params).should eq([ @user_two ])
+          end
+        end
+      end
     end
   end
 end
