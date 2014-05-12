@@ -20,11 +20,7 @@ class User < ActiveRecord::Base
   scope :except_user, lambda { |user| where.not(id: user) }
   scope :experience_level, lambda { |experience| where(experience: experience) }
   scope :by_exercise_type, lambda { |exercise| where(exercise_type: exercise) }
-  
-  def self.by_age(ages)
-    # ages = convert_age_params_into_an_array(ages)
-    where("age IN (?)", ages)
-  end
+  scope :by_age, lambda { |ages| where("age IN (?)", ages) }
 
   def self.filtered_by(params)
     scope =  self.all
@@ -42,12 +38,4 @@ class User < ActiveRecord::Base
   def self.users_address(id)
     find(id).address
   end
-
-  # def self.convert_age_params_into_an_array(age_range)
-  #   ages = age_range.split('..').map(&:to_i)
-  #   if ages.count > 1
-  #     ages = (ages.first..ages.last)
-  #   end
-  #   ages.to_a
-  # end
 end
