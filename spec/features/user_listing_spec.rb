@@ -26,6 +26,7 @@ feature "User listing" do
       visit users_path
       select "Female", from: 'gender'
       click_button("Filter")
+      visit users_searches_path
       page.should have_content(@user_two.screen_name)
       page.should_not have_content(user.screen_name)
     end
@@ -54,11 +55,12 @@ feature "User listing" do
       page.should have_content(@user_two.screen_name)
     end
 
-    scenario "list only users within an age range, gender and experience level" do
+    scenario "list only users within an age range, gender, experience level and exercise type" do
       visit users_path
       select "18-35", from: 'age'
       select "Female", from: 'gender'
       select "Beginner", from: 'experience'
+      select "Strength", from: 'exercise'
       click_button("Filter")
       visit users_searches_path
       page.should have_content(@user_two.screen_name)
