@@ -18,5 +18,10 @@ FactoryGirl.define do
     prefered_place "Hyde park"
     prefered_time "Early Morning 6am-8am"
   end
+
+  factory :message do
+    body "Hello"
+    subject "Hi"
+  end
 end
 
