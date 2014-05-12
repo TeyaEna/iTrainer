@@ -1,2 +1,2 @@
 <%= @user.screen_name %>
-<%= link_to("Send a message", new_message_path( {receiver_id: @user.id} ), class: "button")%>
+<%= link_to("Send a message", new_message_path({ receiver_id: encode_user_params(@user.id) }), class: "button")%>
