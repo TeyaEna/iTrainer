@@ -29,11 +29,11 @@ class User < ActiveRecord::Base
   def self.filtered_by(params)
     scope =  self.all
     scope = scope.except_user(params[:user_id])  
-    scope = scope.by_age(params[:age]) if params[:age]
-    scope = scope.by_gender(params[:gender]) if params[:gender]
+    scope = scope.by_age(params[:age]) if params[:age].present?
+    scope = scope.by_gender(params[:gender]) if params[:gender].present?
     scope = scope.near(users_address(params[:user_id]))
-    scope = scope.experience_level(params[:experience]) if params[:experience]
-    scope = scope.by_exercise_type(params[:exercise]) if params[:exercise]
+    scope = scope.experience_level(params[:experience]) if params[:experience].present?
+    scope = scope.by_exercise_type(params[:exercise]) if params[:exercise].present?
     scope
   end
 

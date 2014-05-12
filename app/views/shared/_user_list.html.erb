@@ -4,19 +4,19 @@
         <div class="large-2 small-12 columns">
   <%= form_tag(users_searches_path, method: 'get') do %>
     <%= label_tag :gender%>
-    <%= select_tag(:gender, options_for_select([ "Male", "Female", "Other"]) ) %>
+    <%= select_tag(:gender, options_for_select([ "Male", "Female", "Other"]), :include_blank => true ) %>
     <% params[:gender] %>
 
     <%= label_tag :age %>
-    <%= select_tag(:age, options_for_select({ '18-35' => 18..35, '35-49' => 35..49, '50-64' =>  50..64, '65+' => 65  }))%>
+    <%= select_tag(:age, options_for_select({ '18-35' => 18..35, '35-49' => 35..49, '50-64' =>  50..64, '65+' => 65}),:include_blank => true )%>
     <% params[:age] %>
 
     <%= label_tag :experience %>
-    <%= select_tag(:experience, options_for_select(experience_types_list))%>
+    <%= select_tag(:experience, options_for_select(experience_types_list), :include_blank => true)%>
     <% params[:experience] %>
 
     <%= label_tag :exercise %>
-    <%= select_tag(:exercise, options_for_select(exercise_type_list))%>
+    <%= select_tag(:exercise, options_for_select(exercise_type_list), :include_blank => true)%>
     <% params[:exercise] %>
 
     <div class="filter-button">
