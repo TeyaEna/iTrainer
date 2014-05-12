@@ -106,11 +106,11 @@ describe User do
         end
         describe "#age" do
           it "returns all the users who match based on age" do
-            User.by_age('18..35').should eq([ @user_two, @user_three ])
+            User.by_age([ 18, 29 ]).should eq([ @user_two, @user_three ])
           end
 
           it "returns all the users who match based on age" do
-            User.by_age('64').should eq([ ])
+            User.by_age([ 64 ]).should eq([ ])
           end
         end
       end
@@ -148,7 +148,7 @@ describe User do
             User.filtered_by(@params).should eq([ @user_two ])
           end
           it "returns the matching users when scopes are applied" do
-            @params = { user_id: @user.id, exercise: "Strength", experience_level: "Beginner", gender: "Female", age: "18-34" }
+            @params = { user_id: @user.id, exercise: "Strength", experience_level: "Beginner", gender: "Female", age: [18,19] }
             User.filtered_by(@params).should eq([ @user_two ])
           end
         end
