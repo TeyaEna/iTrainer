@@ -40,5 +40,12 @@ describe UsersController do
         end
       end
     end
+
+    describe "GET show" do
+      it "responds with a success" do 
+        get :show, { id: user.id }
+        response.should be_ok
+      end  
+    end
   end
 end
