@@ -114,6 +114,29 @@ describe User do
           end
         end
       end
+
+      context "based on experience level" do
+        describe "#experience_level" do
+          it "returns the users based on experience level" do
+            User.experience_level("Beginner").should eq([ @user_two ])
+          end
+
+          it "doesnt return any users based on the experience level" do
+            User.experience_level("Advanced").should eq([])
+          end
+        end
+      end
+      context "based on exercise type" do
+        describe "#by_excercise_type" do
+          it "returns the users based on excercise type" do
+            User.by_exercise_type("Compound").should eq([ @user_two ])
+          end
+
+          it "doesnt return any users based on exercise type" do
+            User.by_exercise_type("Flexiabilty").should eq([])
+          end
+        end
+      end
     end
   end
 end

@@ -16,7 +16,7 @@
     <nav class="top-bar" data-topbar>
       <ul class="title-area">
         <li class="name">
-          <h1><a href="logo-header"><%= image_tag("logo.png", alt: "iTrainer logo") %></a></h1>
+          <h1><%= image_tag("logo.png", alt: "iTrainer logo", style: "height: 42px; width: 160px;") %></h1>
         </li>
         <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
       </ul>
@@ -24,6 +24,7 @@
         <li><%= link_to "Sign Out", sign_out_path, :method => :delete %></li>
       </ul>
     </nav>
+
 
     <% unless flash.empty? %>
       <% flash.each do |name, msg| %>
