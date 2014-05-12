@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Users::SearchesController do
+describe SearchesController do
   let(:user) { FactoryGirl.create(:user) }
   before do
     sign_in(:user, user)

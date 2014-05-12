@@ -1,4 +1,4 @@
-class Users::SearchesController < ApplicationController
+class SearchesController < ApplicationController
   before_filter :authenticate_user!, :convert_age_params_into_an_array
 
   def index

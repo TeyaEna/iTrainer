@@ -2,7 +2,7 @@
   <!-- Side Bar -->
  
         <div class="large-2 small-12 columns">
-  <%= form_tag(users_searches_path, method: 'get') do %>
+  <%= form_tag(searches_path, method: 'get') do %>
     <%= label_tag :gender%>
     <%= select_tag(:gender, options_for_select([ "Male", "Female", "Other"]), :include_blank => true ) %>
     <% params[:gender] %>

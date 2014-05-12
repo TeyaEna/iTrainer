@@ -6,9 +6,6 @@ Rails.application.routes.draw do
     match "/users/sign_out" => "devise/sessions#destroy", :as => "sign_out", via: 'delete'
   end
 
-  resources :users, only: 'index' do
-    resources :searches, only: 'index'
-  end
-
-  get 'users/searches', to: "users/searches#index"
+  resources :users, only: ['index','show']
+  resources :searches, only: 'index'
 end
