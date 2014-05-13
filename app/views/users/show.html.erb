@@ -1,2 +1,29 @@
+<<<<<<< Updated upstream
 <%= @user.screen_name %>
 <%= link_to("Send a message", new_message_path({ receiver_id: encode_user_params(@user.id) }), class: "button")%>
+=======
+<body id="users-list">
+  <div class="row">
+    <div class="large-12 columns">
+      <div class="row"> 
+        <div class="large-4 small-12 columns"> 
+          <%= image_tag @user.avatar(:large) %>    
+          <div class="hide-for-small panel">
+            <h3><%= @user.screen_name %></h3>
+          </div> 
+        </div>
+        <div class="large-8 columns">
+          <div class="row">
+            <h3><%= @user.address %></h3>
+            <p><%= @user.about_me %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="large-3 columns">
+      <a href="/users" class="button [radius round]">Back to users list</a>
+    </div>
+  </div>
+</body>
+        
+>>>>>>> Stashed changes

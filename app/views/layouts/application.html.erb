@@ -13,18 +13,34 @@
 
   <body>
 
-    <nav class="top-bar" data-topbar>
-      <ul class="title-area">
-        <li class="name">
-          <h1><%= image_tag("logo.png", alt: "iTrainer logo", style: "height: 42px; width: 160px;") %></h1>
-        </li>
-        <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
-      </ul>
+     <nav class="top-bar" data-topbar>
+    <ul class="title-area">
+      <!-- Title Area -->
+      <li class="name">
+        <h1>
+          <a href="#">
+<%= image_tag("logo.png", alt: "iTrainer logo", style: "height: 42px; width: 160px;") %>
+          </a>
+        </h1>
+      </li>
+      <li class="toggle-topbar menu-icon"><a href="#"><span>menu</span></a></li>
+    </ul>
+ 
+    <section class="top-bar-section">
+      <!-- Right Nav Section -->
       <ul class="right">
+        <li class="divider"></li>
+        <li><a href="#">Inbox</a></li>
+        <li class="divider"></li>
+        <li class="divider"></li>
+        <li><%= link_to "Users", users_path, :method => :show %></li>
+        <li class="divider"></li>
+        <li class="divider"></li>
         <li><%= link_to "Sign Out", sign_out_path, :method => :delete %></li>
+        <li class="divider"></li>
       </ul>
-    </nav>
-
+    </section>
+  </nav>
 
     <% unless flash.empty? %>
       <% flash.each do |name, msg| %>
@@ -40,4 +56,16 @@
     <%= yield %>
     <%= javascript_include_tag "application" %>
   </body>
+
+  <footer class="row">
+    <div class="large-12 columns">
+      <hr />
+      <div class="row">
+        <div class="large-6 columns">
+          <p>© Shaban Karumba &amp; Teja Kocjancic.</p>
+        </div>
+      </div>
+    </div> 
+  </footer>
+  
 </html>

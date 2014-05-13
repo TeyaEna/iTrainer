@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   validates :first_name, :last_name , format: {with: /\A[A-Za-z]+\z/}
   validates :about_me, presence: true
 
-  has_attached_file :avatar, :styles => { :medium => "250x250#", :thumb => "100x100#" }, :default_url => "/images/:style/missing.png"
+  has_attached_file :avatar, :styles => {:large => "300x300#", :medium => "250x250#", :thumb => "100x100#" }, :default_url => "/images/:style/missing.png"
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
   validates_with AttachmentPresenceValidator, :attributes => :avatar
 
