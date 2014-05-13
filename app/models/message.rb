@@ -6,6 +6,8 @@ class Message < ActiveRecord::Base
 
   before_save :set_receiver_id
 
+  scope :received_messages, lambda { |user| where(receiver_id: user).order(created_at: :asc)}
+
   def set_receiver_id
     self.receiver_id = find_user_screen_name.id
   end
