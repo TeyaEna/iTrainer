@@ -10,7 +10,7 @@ feature "Messaging" do
     @user_two = FactoryGirl.create(:second_user) 
   end
 
-  scenario "clickign a link on the users profile page to send them a message" do
+  scenario "clicking a link on the users profile page to send them a message" do
     visit user_path(@user_two.id)
     click_link("Send a message")
     new_message_path(receiver_id: @user_two.id)
