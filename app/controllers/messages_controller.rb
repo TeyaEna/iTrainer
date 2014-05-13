@@ -2,14 +2,17 @@ class MessagesController < ApplicationController
   before_filter :authenticate_user!
   
   def new
-    @message = Message.new(receiver_params)
+    @message = Message.new
     @user = User.find(params[:receiver_id])
   end
 
   def create
     @message = Message.new(message_params)
+    @message.sender = current_user
+    @message.receiver_id = User.find_by_screen_name(params[:message][:screen_name])
+    
     if @message.valid?
-      @message.save(message_params)
+      @message.save
       redirect_to users_path
       flash[:success] = "Message sent"
     else 
@@ -20,12 +23,8 @@ class MessagesController < ApplicationController
 
   private
 
-  def message_params  
-    params[:message].merge!({ sender_id: current_user.id})
-    params.require(:message).permit(:subject, :body, :screen_name, :sender_id, :receiver_id)
+  def message_params
+    params.require(:message).permit(:subject, :body)
   end
 
-  def receiver_params
-    params.permit(:receiver_id)
-  end
 end
