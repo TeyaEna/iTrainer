@@ -2,17 +2,18 @@ require 'spec_helper'
 
 feature "Messaging" do
   let(:user) { FactoryGirl.create(:user) }
-  let(:user_two) { FactoryGirl.create(:user, first_name: "Bob") }
-  let(:message) { FactoryGirl.create(:message) }
+  let(:message) { FactoryGirl.build(:message) }
+  let(:user_two) { FactoryGirl.create(:second_user) }
 
   before do
     login_as(user)
+    @user_two = FactoryGirl.create(:second_user) 
   end
 
   scenario "clickign a link on the users profile page to send them a message" do
-    visit user_path(user_two)
+    visit user_path(@user_two.id)
     click_link("Send a message")
-    visit new_message_path
+    new_message_path(receiver_id: @user_two.id)
     fill_in :message_subject, with: message.subject
     fill_in :message_body, with: message.body
     click_button("Send")
