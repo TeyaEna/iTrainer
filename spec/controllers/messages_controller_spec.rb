@@ -27,6 +27,7 @@ describe MessagesController do
     context "when incorrect params are entered" do
       before do
         request.env["HTTP_REFERER"] = new_message_path(user_two)
+        invalid_params[:message].merge!(screen_name: user_two.screen_name)
       end
 
       it "does not create a new message with incorrect params" do
