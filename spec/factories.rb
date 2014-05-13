@@ -19,6 +19,12 @@ FactoryGirl.define do
     prefered_time "Early Morning 6am-8am"
   end
 
+  factory :second_user, parent: "user" do
+    gender "Female"
+    screen_name "foobaz88"
+    age 18
+  end
+
   factory :message do
     body "Hello"
     subject "Hi"
