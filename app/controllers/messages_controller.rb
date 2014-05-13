@@ -15,7 +15,7 @@ class MessagesController < ApplicationController
       redirect_to users_path
       flash[:success] = "Message sent"
     else 
-      render "new"
+      redirect_to request.referrer
       flash[:error] = "There's an error on the message form"
     end
   end
