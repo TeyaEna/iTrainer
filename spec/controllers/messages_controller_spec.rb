@@ -6,17 +6,19 @@ describe MessagesController do
 
   before do
     sign_in(:user, user)
+    @user_two = FactoryGirl.create(:second_user)
   end
   
   describe "GET# new" do
     it "returns a success status for the page" do
-      get :new
+      get :new, receiver_id: @user_two.id
       response.should be_ok
     end
   end
 
   describe "POST# create" do
     it "creates a new message with the correct params" do
+      message_params.merge!(sender_id: user.id, screen_name: @user_two.screen_name)
       expect{ post :create, message: message_params
       }.to change( Message, :count ).by(1)
     end

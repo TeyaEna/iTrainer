@@ -1,13 +1,17 @@
+require 'base64'
+
 class MessagesController < ApplicationController
   before_filter :authenticate_user!
-
+  
   def new
     @message = Message.new(receiver_params)
+    @user = User.find(params[:receiver_id])
   end
 
   def create
-    @message = Message.create(message_params)
-    if @message.save
+    @message = Message.new(message_params)
+    if @message.valid?
+      @message.save(message_params)
       redirect_to users_path
       flash[:success] = "Message sent"
     else 
@@ -18,9 +22,9 @@ class MessagesController < ApplicationController
 
   private
 
-  def message_params
-    params.merge(sender_id: current_user.id)
-    params.require(:message).permit(:subject, :body, :receiver_id, :sender_id)
+  def message_params  
+    params[:message].merge!({ sender_id: current_user.id})
+    params.require(:message).permit(:subject, :body, :screen_name, :sender_id, :receiver_id)
   end
 
   def receiver_params
