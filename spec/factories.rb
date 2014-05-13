@@ -29,5 +29,10 @@ FactoryGirl.define do
     body "Hello"
     subject "Hi"
   end
+
+  factory :second_message, parent: "message" do
+    body "Byb bye"
+    subject "Bye"
+  end
 end
 
