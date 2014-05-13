@@ -9,8 +9,8 @@ class MessagesController < ApplicationController
   def create
     @message = Message.new(message_params)
     @message.sender = current_user
-    @message.receiver_id = User.find_by_screen_name(params[:message][:screen_name])
-    
+    @message.receiver_id = User.find_by_screen_name(params[:message][:screen_name]).id
+
     if @message.valid?
       @message.save
       redirect_to users_path
