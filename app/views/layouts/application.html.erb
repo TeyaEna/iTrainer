@@ -1,31 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
     <title><%= content_for?(:title) ? yield(:title) : "iTrainer" %></title>
-
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "vendor/modernizr" %>
     <%= csrf_meta_tags %>
   </head>
 
   <body>
-
-     <nav class="top-bar" data-topbar>
+  <nav class="top-bar" data-topbar>
     <ul class="title-area">
-      <!-- Title Area -->
-      <li class="name">
-        <h1>
-          <a href="#">
-<%= image_tag("logo.png", alt: "iTrainer logo", style: "height: 42px; width: 160px;") %>
-          </a>
-        </h1>
-      </li>
-      <li class="toggle-topbar menu-icon"><a href="#"><span>menu</span></a></li>
+      <%= image_tag("logo.png", alt: "iTrainer logo", style: "height: 42px; width: 160px;") %>
+    <li class="toggle-topbar menu-icon"><a href="#"><span>menu</span></a></li>
     </ul>
- 
     <section class="top-bar-section">
       <!-- Right Nav Section -->
       <ul class="right">
@@ -57,15 +47,5 @@
     <%= javascript_include_tag "application" %>
   </body>
 
-  <footer class="row">
-    <div class="large-12 columns">
-      <hr />
-      <div class="row">
-        <div class="large-6 columns">
-          <p>© Shaban Karumba &amp; Teja Kocjancic.</p>
-        </div>
-      </div>
-    </div> 
-  </footer>
   
 </html>

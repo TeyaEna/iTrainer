@@ -1,13 +1,29 @@
-<%= form_for(@message) do |form| %>
-  <%= form.label(:to) %>
-  <% screen_name = @user.screen_name %>
-  <%= form.text_field(:screen_name, value: screen_name, readonly: true ) %>
-  
-  <%= form.label(:subject)  %>
-  <%= form.text_field(:subject) %>
+<body id="generic-page-style">
+  <div class="row">
+    <div class="large-9 columns"> 
+      <div class="signin-panel">
+        <h3>Get in Touch!</h3>
+        <div class="section-container tabs" data-section>
+          <section class="section">
+            <div class="content" data-slug="panel1">
+              <%= form_for(@message) do |form| %>
+              <%= form.label(:to) %>
+              <% screen_name = @user.screen_name %>
+              <%= form.text_field(:screen_name, value: screen_name, readonly: true ) %>
+              
+              <%= form.label(:subject)  %>
+              <%= form.text_field(:subject) %>
 
-  <%= form.label(:body) %>
-  <%= form.text_area(:body) %>
+              <%= form.label(:body) %>
+              <%= form.text_area(:body) %>
 
-  <%= form.submit("Send", class: "button") %>
-<% end %>
+              <%= form.submit("Send", class: "radius button") %>
+            <% end %>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div> 
+  </div>
+</body>
+ 
