@@ -1,5 +1,3 @@
-require 'base64'
-
 class MessagesController < ApplicationController
   before_filter :authenticate_user!
   
