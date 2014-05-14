@@ -41,4 +41,14 @@ describe MessagesController do
       end
     end
   end
+
+  describe "GET# show" do
+    before do
+      @message = FactoryGirl.create(:message)
+    end
+    it "displays the message page" do
+      get :show, id: @message.id
+      response.should be_ok
+    end
+  end
 end
