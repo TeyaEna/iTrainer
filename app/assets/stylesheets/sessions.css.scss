@@ -12,10 +12,13 @@
 }
 
 .signin-panel{
-  margin-top: 50px;
+  margin-top: 25px;
   text-align: left;
   width: 100%;
   min-width: 20em;
+  background: white;
+  border-radius: 5px;
+  padding: 10px;
 }
 
 .signin-fields{
@@ -32,13 +35,6 @@
   margin-left: 40%;
 }
 
-.signin-panel {
-  background: white;
-  border-radius: 5px;
-  padding: 15px;
-}
-
-
 #generic-page-style {
   background: -webkit-gradient(radial, center center, 0, center center, 460, from(#76cbe3), to(#4db4dc));  
 }
@@ -53,4 +49,13 @@
 
 .profile-picture {
   margin-top: 15px;  
+}
+
+.sports-icons{
+  margin-left: -40px;
+  margin-top: 70px;
+  }
+
+.fix_button_group{
+white-space: nowrap;
 }
