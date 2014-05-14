@@ -18,8 +18,6 @@ describe Message do
 
     describe "scopes" do
       before do
-        # @user = FactoryGirl.create(:user)
-        # @second_user = FactoryGirl.create(:second_user)
         attributes = {receiver_id: second_user.id, sender_id: user.id }
         @message_one = FactoryGirl.create(:message, attributes)
         @message_two = FactoryGirl.create(:message, attributes)
