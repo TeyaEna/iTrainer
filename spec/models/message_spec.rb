@@ -20,11 +20,11 @@ describe Message do
       before do
         attributes = {receiver_id: second_user.id, sender_id: user.id }
         @message_one = FactoryGirl.create(:message, attributes)
-        @message_two = FactoryGirl.create(:message, attributes)
+        @message_two = FactoryGirl.create(:second_message, attributes)
       end
       describe "received_messages" do
         it "returns a list of messages in ascending oreder" do
-          Message.received_messages(second_user.id).should eq([ @message_one, @message_two ])
+          Message.received_messages(second_user.id).should eq({ user.id => [ @message_one, @message_two] })
         end
       end
     end
