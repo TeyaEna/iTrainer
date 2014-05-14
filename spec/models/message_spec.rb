@@ -24,7 +24,7 @@ describe Message do
       end
       describe "received_messages" do
         it "returns a list of messages in ascending oreder" do
-          Message.received_messages(second_user.id).should eq({ user.id => [ @message_one, @message_two] })
+          Message.received_messages(second_user.id).should eq({ user.id => [ @message_two, @message_one ] })
         end
       end
     end
