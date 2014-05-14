@@ -1,4 +1,4 @@
-class Messages::InboxesController < ApplicationController
+class InboxController < ApplicationController
   before_filter :authenticate_user!
 
   def index
