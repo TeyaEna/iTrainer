@@ -4,6 +4,7 @@ describe Message do
   subject { FactoryGirl.build(:message) }
   let(:user) { FactoryGirl.create(:user) }
   let(:second_user) { FactoryGirl.create(:second_user) }
+  let(:attributes) { {receiver_id: second_user.id, sender_id: user.id } }
  
   describe "validations" do
     it "a blank subject raises a validation error" do
@@ -18,7 +19,6 @@ describe Message do
 
     describe "scopes" do
       before do
-        attributes = {receiver_id: second_user.id, sender_id: user.id }
         @message_one = FactoryGirl.create(:message, attributes)
         @message_two = FactoryGirl.create(:second_message, attributes)
       end
