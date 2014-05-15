@@ -9,7 +9,7 @@ FactoryGirl.define do
     sequence(:email) {|n| "fooz#{n}@bar.com" }
     password "foobar12"
     password_confirmation "foobar12"
-    screen_name "foobaz"
+    sequence(:screen_name) {|n| "foobaz #{n}"}
     about_me "I am a foo bar"
     avatar Rails.root.join("spec/fixtures/images/ruby.png").open
     address "New York, NY"
@@ -19,14 +19,9 @@ FactoryGirl.define do
     prefered_time "Early Morning 6am-8am"
   end
 
-  factory :second_user, parent: "user" do
-    gender "Female"
-    screen_name "flow"
-    age 18
-    address "N17 7NP"
-  end
-
   factory :message do
+    association :sender, factory: :user
+    association :receiver, factory: :user
     body "Hello"
     subject "Hi"
   end
