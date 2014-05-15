@@ -16,7 +16,16 @@
   padding-top: 15px;
 }
 
-.signin-panel p {
+.signup-panel {
+  background: white;
+  border-radius: 5px;
+  padding: 15px;
+  width: 100%;
+  min-width: 20em;
+  min-height: 360px;  
+}
+
+.signup-panel p {
   font-size: 15px;
   font-weight: 200;
   margin-left: 30%;
@@ -27,11 +36,26 @@
 
 }
 
-.signup-panel {
+.profile-panel p {
+  font-size: 15px;
+  font-weight: 200;
+  margin-left: 5%;
+}
+
+.profile-panel h5 {
+  font-size: 15px;
+  font-weight: 200;
+  margin-left: 5%;
+}
+.profile-panel {
   background: white;
   border-radius: 5px;
   padding: 15px;
   width: 100%;
   min-width: 20em;
   min-height: 360px;  
+}
+
+.panel .h5 .h6 {
+      font-family: 'Gotham';
 }
