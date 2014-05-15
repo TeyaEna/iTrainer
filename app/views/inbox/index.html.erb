@@ -16,5 +16,8 @@
       <td><%= link_to("Message", message_path(message.first.id))%></td>
     </tr>
   </tbody>
+    <% end %>
+  <% else %>
+    <p> You have no messages in your inbox </p>
   <% end %>
 </table>
