@@ -1,7 +1,20 @@
-<ul style="list-style:none">
-  <% @messages.each do |id, message| %>
-    <li><%= message.first.subject %></li>
-    <li><%= time_ago_in_words(message.first.created_at) %></li>
-    <li><%= link_to("Message", message_path(message.first.id))%></li>
+<table>
+  <thead>
+    <tr>
+      <th width="200">Time</th>
+      <th width="150">Sender</th>
+      <th width="150">Subject</th>
+      <th width="150">Message</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @messages.each do |id, message| %>
+    <tr>
+      <td><%= time_ago_in_words(message.first.created_at) %></td>
+      <td><%= @message.screen_name %></td>
+      <td><%= message.first.subject %></td>
+      <td><%= link_to("Message", message_path(message.first.id))%></td>
+    </tr>
+  </tbody>
   <% end %>
-</ul>
+</table>
