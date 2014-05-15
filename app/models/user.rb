@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
   scope :except_user, lambda { |user| where.not(id: user) }
   scope :experience_level, lambda { |experience| where(experience: experience) }
   scope :by_exercise_type, lambda { |exercise| where(exercise_type: exercise) }
-  scope :by_age, lambda { |ages| where("age IN (?)", ages) }
+  scope :by_age, lambda { |ages| where(age: ages) }
 
   def self.filtered_by(params)
     scope =  self.all
