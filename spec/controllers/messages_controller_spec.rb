@@ -4,7 +4,7 @@ describe MessagesController do
   let(:user) { FactoryGirl.create(:user) }
   let(:message_params) { FactoryGirl.attributes_for(:message) }
   let(:invalid_params) { { message: { subject: "", body: ""}  }}
-  let(:user_two) { FactoryGirl.create(:second_user) }
+  let(:user_two) { FactoryGirl.create(:user) }
 
   before do
     sign_in(:user, user)
