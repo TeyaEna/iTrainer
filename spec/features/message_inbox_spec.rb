@@ -4,18 +4,14 @@ feature "Message Inbox" do
 
   let!(:user) { FactoryGirl.create(:user) }
   let!(:second_user) { FactoryGirl.create(:user) }
-  let(:user) { FactoryGirl.create(:user) }
-  let(:second_user) { FactoryGirl.create(:user) }
 
   before do
     login_as(user)
-    @message = FactoryGirl.create(:message, sender_id: second_user.id, receiver_id: user.id )
   end
 
   context "when there are messages" do
     before do 
-      @second_user = FactoryGirl.create(:user)
-      @message = FactoryGirl.create(:message, sender_id: @second_user.id, receiver_id: user.id )
+      @message = FactoryGirl.create(:message, sender_id: second_user.id, receiver_id: user.id )
     end
     scenario "view message inbox" do
       visit root_path
