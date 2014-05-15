@@ -11,7 +11,7 @@
     <% @messages.each do |id, message| %>
     <tr>
       <td><%= time_ago_in_words(message.first.created_at) %></td>
-      <td><%= @message.screen_name %></td>
+      <td><%= message.first.sender.screen_name %></td>
       <td><%= message.first.subject %></td>
       <td><%= link_to("Message", message_path(message.first.id))%></td>
     </tr>
