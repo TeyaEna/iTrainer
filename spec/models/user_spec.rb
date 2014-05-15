@@ -2,6 +2,11 @@ require 'spec_helper'
 
 describe User do
  subject { FactoryGirl.build(:user) }
+ let(:params) { {user_id: @user.id} }
+ let(:params_long) do
+  { user_id: @user.id, exercise: "Strength", 
+    experience_level: "Beginner", gender: "Female", age: [18,19] }
+ end
 
   describe "validations" do
     it "validates the files can be attached" do
@@ -82,13 +87,13 @@ describe User do
     context "return all users except the current user" do
       
       before do
-        subject { FactoryGirl.create(:user) }
-        @user_two = FactoryGirl.create(:user, first_name: "Baz", email: "baz@gmail.com", gender: "Female", age: 18)
+        @user = FactoryGirl.create(:user)
+        @user_two = FactoryGirl.create(:user, gender: "Female", age: 18)
       end
 
       describe "#except_user" do
         it "returns all users execpt the current user" do
-          User.except_user(subject).should eq([ @user_two ])
+          User.except_user(@user).should eq([ @user_two ])
         end
       end
 
@@ -118,7 +123,7 @@ describe User do
       context "based on experience level" do
         describe "#experience_level" do
           it "returns the users based on experience level" do
-            User.experience_level("Beginner").should eq([ @user_two ])
+            User.experience_level("Beginner").should eq([ @user, @user_two ])
           end
 
           it "doesnt return any users based on the experience level" do
@@ -129,7 +134,7 @@ describe User do
       context "based on exercise type" do
         describe "#by_excercise_type" do
           it "returns the users based on excercise type" do
-            User.by_exercise_type("Strength").should eq([ @user_two ])
+            User.by_exercise_type("Strength").should eq([ @user, @user_two ])
           end
 
           it "doesnt return any users based on exercise type" do
@@ -138,18 +143,12 @@ describe User do
         end
       end
       context "filtered by all options" do
-        before do
-          user_attributes = FactoryGirl.attributes_for(:user)
-          @user = User.create(user_attributes)
-          @params = { user_id: @user.id }
-        end
         describe "#filtered_by" do
           it "returns all the users as no scopes have been applied" do
-            User.filtered_by(@params).should eq([ @user_two ])
+            User.filtered_by(params).should eq([ @user_two ])
           end
           it "returns the matching users when scopes are applied" do
-            @params = { user_id: @user.id, exercise: "Strength", experience_level: "Beginner", gender: "Female", age: [18,19] }
-            User.filtered_by(@params).should eq([ @user_two ])
+            User.filtered_by(params_long).should eq([ @user_two ])
           end
         end
       end
