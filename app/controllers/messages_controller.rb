@@ -23,6 +23,8 @@ class MessagesController < ApplicationController
 
   def show
     @message = Message.find(params[:id])
+    @received_messages = Message.received_message(@message.receiver_id, @message.sender_id)
+    @sent_messages = Message.sent_message(@message.sender_id, @message.receiver_id)
   end
 
   private

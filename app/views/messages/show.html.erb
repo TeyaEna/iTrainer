@@ -1,4 +1,19 @@
-<%= @message.sender.screen_name %>
-<%= @message.subject %>
-<%= @message.body %>
+<table>
+  <thead>
+    <tr>
+      <th width="200">Time</th>
+      <th width="150">Sender</th>
+      <th width="150">Subject</th>
+      <th width="150">Message</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if @received_messages.size > 0 %>
+      <% @received_messages.zip(@sent_messages).each do |message| %>
 
+  </tbody>
+    <% end %>
+  <% else %>
+    <p> You have no messages in your inbox </p>
+  <% end %>
+</table>
