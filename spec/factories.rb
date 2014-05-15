@@ -21,7 +21,7 @@ FactoryGirl.define do
 
   factory :second_user, parent: "user" do
     gender "Female"
-    screen_name "foobaz88"
+    screen_name "flow"
     age 18
   end
 
