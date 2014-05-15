@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Message do
   subject { FactoryGirl.build(:message) }
   let(:user) { FactoryGirl.create(:user) }
-  let(:second_user) { FactoryGirl.create(:second_user) }
+  let(:second_user) { FactoryGirl.create(:user) }
   let(:attributes) { {receiver_id: second_user.id, sender_id: user.id } }
  
   describe "validations" do
