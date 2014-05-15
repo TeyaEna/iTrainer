@@ -23,6 +23,7 @@ FactoryGirl.define do
     gender "Female"
     screen_name "flow"
     age 18
+    address "N17 7NP"
   end
 
   factory :message do
