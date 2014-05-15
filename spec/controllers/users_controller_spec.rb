@@ -18,7 +18,7 @@ describe UsersController do
     context "listing users" do
       before do
         @user_one = FactoryGirl.create(:user, address: "N16")
-        @user_two = FactoryGirl.create(:second_user)
+        @user_two = FactoryGirl.create(:user, address: "N17 7NP")
       end
       context "all users except current user" do
         it "returns an array of users except the current user" do
