@@ -26,6 +26,10 @@ describe Message do
         it "returns a list of messages in ascending oreder" do
           Message.all_received_messages(second_user.id).should eq({ user.id => [ @message_two, @message_one ] })
         end
+
+        it "does not return any messages as there none which match" do
+          Message.all_received_messages(user.id).should eq({})
+        end
       end
     end
   end
