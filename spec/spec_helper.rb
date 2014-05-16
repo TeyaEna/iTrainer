@@ -4,7 +4,6 @@ require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'rspec/autorun'
 require 'capybara/rspec'
-require 'database_cleaner'
 require "paperclip/matchers"
 
 # Requires supporting ruby files with custom matchers and macros, etc,
@@ -27,4 +26,5 @@ RSpec.configure do |config|
   Warden.test_mode!
 
   config.include Capybara::DSL
+
 end
