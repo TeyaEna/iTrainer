@@ -50,5 +50,10 @@ describe MessagesController do
       get :show, id: @message.id
       response.should be_ok
     end
+
+    it "gets all the sent and received messages" do
+      get :show, id: @message.id
+      assigns(:messages).should eq([  @message ])
+    end
   end
 end

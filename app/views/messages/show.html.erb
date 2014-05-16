@@ -7,11 +7,15 @@
       <th width="150">Message</th>
     </tr>
   </thead>
-  <tbody>
     <% if @received_messages.size > 0 %>
-      <% @received_messages.zip(@sent_messages).each do |message| %>
-
-  </tbody>
+      <tbody>
+          <% @messages.each do |message| %>          
+              <p>Screen Name:<%= message.sender.screen_name %></p>
+              <%= time_ago_in_words(message.created_at) %>
+              <%= message.subject %>
+              <%= message.body %>
+        
+      </tbody>
     <% end %>
   <% else %>
     <p> You have no messages in your inbox </p>
