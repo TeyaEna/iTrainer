@@ -2,9 +2,22 @@ require 'spec_helper'
 
 describe User do
  subject { FactoryGirl.build(:user) }
- let(:params) { {user_id: @user.id} }
+ let(:current_user) { FactoryGirl.create(:user) }
+ let(:params) { {user_id: current_user.id} }
+ let(:female_user) { FactoryGirl.create(:user, gender: "Female") }
+ let(:other_user) { FactoryGirl.create(:user, first_name: "Geoff")}
+ let(:young_user) { FactoryGirl.create(:user, age: 18)}
+ let(:strong_user) { FactoryGirl.create(:user, exercise_type: "Strength")}
+ let(:inexperienced_user) { FactoryGirl.create(:user, experience: "Beginner")}
+ let(:regular_user) { FactoryGirl.create(:user) }
+ 
+ let(:all_options_user ) do 
+   FactoryGirl.create(:user, exercise_type: "Strength", 
+   experience: "Beginner", gender: "Female", age: 18)
+ end
+
  let(:params_long) do
-  { user_id: @user.id, exercise: "Strength", 
+  { user_id: current_user.id, exercise: "Strength", 
     experience_level: "Beginner", gender: "Female", age: [18,19] }
  end
 
@@ -85,33 +98,24 @@ describe User do
 
   describe "scopes" do
     context "return all users except the current user" do
-      
-      before do
-        @user = FactoryGirl.create(:user)
-        @user_two = FactoryGirl.create(:user, gender: "Female", age: 18)
-      end
-
       describe "#except_user" do
         it "returns all users execpt the current user" do
-          User.except_user(@user).should eq([ @user_two ])
+          User.except_user(current_user).should eq([ other_user ])
         end
       end
 
       context "based on gender" do
         describe "#gender" do
           it "returns all the users who match based on gender" do
-            User.by_gender("Female").should eq([ @user_two ])
+            User.by_gender("Female").should eq([ female_user ])
           end
         end
       end
 
       context "based on age" do
-        before do
-          @user_three = FactoryGirl.create(:user, age: 29)
-        end
         describe "#age" do
           it "returns all the users who match based on age" do
-            User.by_age([ 18, 29 ]).should eq([ @user_two, @user_three ])
+            User.by_age([ 18, 29 ]).should eq([ young_user ])
           end
 
           it "returns all the users who match based on age" do
@@ -123,7 +127,7 @@ describe User do
       context "based on experience level" do
         describe "#experience_level" do
           it "returns the users based on experience level" do
-            User.experience_level("Beginner").should eq([ @user, @user_two ])
+            User.experience_level("Beginner").should eq([ inexperienced_user ])
           end
 
           it "doesnt return any users based on the experience level" do
@@ -131,10 +135,11 @@ describe User do
           end
         end
       end
+
       context "based on exercise type" do
         describe "#by_excercise_type" do
           it "returns the users based on excercise type" do
-            User.by_exercise_type("Strength").should eq([ @user, @user_two ])
+            User.by_exercise_type("Strength").should eq([ strong_user ])
           end
 
           it "doesnt return any users based on exercise type" do
@@ -142,13 +147,14 @@ describe User do
           end
         end
       end
+
       context "filtered by all options" do
         describe "#filtered_by" do
           it "returns all the users as no scopes have been applied" do
-            User.filtered_by(params).should eq([ @user_two ])
+            User.filtered_by(params).should eq([ regular_user  ])
           end
           it "returns the matching users when scopes are applied" do
-            User.filtered_by(params_long).should eq([ @user_two ])
+            User.filtered_by(params_long).should eq([ all_options_user ])
           end
         end
       end
