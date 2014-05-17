@@ -7,17 +7,21 @@
       <th width="150">Message</th>
     </tr>
   </thead>
-    <% if @received_messages.size > 0 %>
-      <tbody>
-          <% @messages.each do |message| %>          
-              <p>Screen Name:<%= message.sender.screen_name %></p>
-              <%= time_ago_in_words(message.created_at) %>
-              <%= message.subject %>
-              <%= message.body %>
-        
-      </tbody>
-    <% end %>
-  <% else %>
-    <p> You have no messages in your inbox </p>
-  <% end %>
+    <tbody>
+      <% @messages.each do |message| %>          
+      <tr>
+          <td><%= message.sender.screen_name %></td>
+          <td><%= time_ago_in_words(message.created_at) %></td>
+          <td><%= message.subject %></td>
+          <td><%= message.body %></td>
+        <% end %>
+      </tr>
+    </tbody>
 </table>
+
+<%= form_for(Message.new, url: {action: "create", controller: "replies"} ) do |form| %>
+  <%= form.text_area(:body) %>
+  <%= form.hidden_field(:subject, value: @message.subject) %>
+  <%= form.hidden_field(:receiver_id, value: @received_messages.last.sender_id ) %>
+  <%= form.submit("Reply", class: "button") %>
+<% end %>
