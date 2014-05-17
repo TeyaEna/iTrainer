@@ -5,6 +5,7 @@ describe MessagesController do
   let(:message_params) { FactoryGirl.attributes_for(:message) }
   let(:invalid_params) { { message: { subject: "", body: ""}  }}
   let(:user_two) { FactoryGirl.create(:user) }
+  let(:message) { FactoryGirl.create(:message) }
 
   before do
     sign_in(:user, user)
@@ -43,17 +44,14 @@ describe MessagesController do
   end
 
   describe "GET# show" do
-    before do
-      @message = FactoryGirl.create(:message)
-    end
     it "displays the message page" do
-      get :show, id: @message.id
+      get :show, id: message.id
       response.should be_ok
     end
 
     it "gets all the sent and received messages" do
-      get :show, id: @message.id
-      assigns(:messages).should eq([  @message ])
+      get :show, id: message.id
+      assigns(:messages).should eq([  message ])
     end
   end
 end
