@@ -6,6 +6,7 @@ describe Message do
   let(:sending_user) { FactoryGirl.create(:user) }
   let(:receiver) { {receiver_id: receiving_user.id, sender_id: sending_user.id} }
   let(:sender) { {sender_id: receiving_user.id, receiver_id: sending_user.id  } }
+  let(:message) { FactoryGirl.create(:message, sender) }
  
   describe "validations" do
     it "a blank subject raises a validation error" do
@@ -46,11 +47,8 @@ describe Message do
       end
 
       describe "#sent_messages" do
-        before do
-          @message = FactoryGirl.create(:message, sender)
-        end
         it "returns all the received messages based on sender_id and receiver_id" do
-          Message.sent_messages(receiving_user.id, sending_user.id).should eq([ @message ])
+          Message.sent_messages(receiving_user.id, sending_user.id).should eq([ message ])
         end
 
         it "doesn't return any results for sent messages" do
