@@ -1,11 +1,15 @@
 require 'spec_helper'
 
 describe RepliesController do
-  let(:sender) { FactoryGirl.create(:user) }
-  let(:receiver) { FactoryGirl.create(:user) }
-  let(:message) { FactoryGirl.create(:message, sender_id: sender, receiver_id: receiver) }
-  let(:valid_params) { FactoryGirl.attributes_for(:message) }
+  let!(:sender) { FactoryGirl.create(:user) }
+  let!(:receiver) { FactoryGirl.create(:user) }
+  let(:message) { FactoryGirl.create(:message) }
+  let(:valid_params) { FactoryGirl.attributes_for(:message, sender_id: sender.id, receiver_id: receiver.id) }
   let(:invalid_params) { { message: { subject: "", body: ""}  }}
+
+  before do
+    sign_in(:user, sender)
+  end
 
   describe "POST #create" do
     before do

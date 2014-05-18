@@ -1,4 +1,5 @@
 class RepliesController < ApplicationController
+  before_filter :authenticate_user!
 
   def create
     @message = Message.new(message_params)
