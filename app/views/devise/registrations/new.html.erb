@@ -26,7 +26,7 @@
             <%= f.label :gender %><br />
               <%= f.select :gender, ["Male", "Female", "Undefined"], autocomplete: "off" %>
             <%= f.label :about_me %>
-              <%= f.text_area :about_me %><br>
+              <%= f.text_area :about_me, placeholder: "Please enter a minimum of 100 characters about yourself" %><br>
             <%= f.label :avatar %>
               <%= f.file_field :avatar %>
             <%= f.label :address %>
