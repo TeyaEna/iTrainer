@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   validates :first_name, :last_name,:gender,:age,:screen_name, :address, presence: true
   validates :exercise_type, :experience, :prefered_time, presence: true
   validates :first_name, :last_name , format: {with: /\A[A-Za-z]+\z/}
-  validates :about_me, presence: true
+  validates :about_me, presence: true, length: { minimum: 100 }
 
   has_attached_file :avatar, :styles => {:large => "300x300#", :medium => "250x250#", :thumb => "100x100#" }, :default_url => "/images/:style/missing.png"
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/

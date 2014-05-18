@@ -78,7 +78,7 @@ describe User do
 
     it "validates presence of about me on create" do
       subject.about_me = ""
-      subject.should have(1).error_on(:about_me)
+      subject.should have(2).error_on(:about_me)
     end
      it "validates presence of experience on create" do
       subject.experience = ""
@@ -93,6 +93,11 @@ describe User do
     it "validates presence of prefered times" do
       subject.prefered_time = ""
       subject.should have(1).error_on(:prefered_time)
+    end
+
+    it "validates length of about me" do
+      subject.about_me = "12"
+      subject.should have(1).error_on(:about_me)      
     end
   end
 

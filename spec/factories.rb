@@ -10,7 +10,8 @@ FactoryGirl.define do
     password "foobar12"
     password_confirmation "foobar12"
     sequence(:screen_name) {|n| "foobaz #{n}"}
-    about_me "I am a foo bar"
+    about_me "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. 
+    Aenean commodo ligula eget dolor. Aenean m"
     avatar Rails.root.join("spec/fixtures/images/ruby.png").open
     address "New York, NY"
     exercise_type "Strength"
