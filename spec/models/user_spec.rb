@@ -99,6 +99,11 @@ describe User do
       subject.about_me = "12"
       subject.should have(1).error_on(:about_me)      
     end
+
+    it "validates the uniqueness of screen_name" do
+      subject.screen_name = current_user.screen_name
+      subject.should have(1).error_on(:screen_name)
+    end
   end
 
   describe "scopes" do
