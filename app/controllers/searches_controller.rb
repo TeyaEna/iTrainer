@@ -10,9 +10,7 @@ class SearchesController < ApplicationController
   def convert_age_params_into_an_array
     if params[:age].present?
       bounds = params[:age].split('..').map(&:to_i)
-      if bounds.count > 1
-        ages = (bounds.first..bounds.last)
-      end
+      ages = bounds.count > 1 ? (bounds.first..bounds.last) : bounds
     end
     params[:age] = ages
   end
