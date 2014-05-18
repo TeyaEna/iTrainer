@@ -8,4 +8,9 @@ class Message < ActiveRecord::Base
   scope :received_messages, lambda {|receiver, sender| where(receiver_id: receiver, sender_id: sender).order(created_at: :desc) }
   scope :sent_messages, lambda {|sender, receiver| where(sender_id: sender, receiver_id: receiver).order(created_at: :desc) }
 
+  after_save :new_message
+
+  def new_message
+    MessageMailer.new_message(self).deliver
+  end
 end

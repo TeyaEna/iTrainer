@@ -45,16 +45,27 @@ describe Message do
           Message.received_messages(sending_user.id, receiving_user.id).should eq([ ])
         end
       end
+
+      describe "#sent_messages" do
+        it "returns all the received messages based on sender_id and receiver_id" do
+          Message.sent_messages(receiving_user.id, sending_user.id).should eq([ message ])
+        end
+
+        it "doesn't return any results for sent messages" do
+          Message.sent_messages(receiving_user.id,sending_user.id ).should eq([ ])
+        end
+      end
     end
+  end
 
-    describe "#sent_messages" do
-      it "returns all the received messages based on sender_id and receiver_id" do
-        Message.sent_messages(receiving_user.id, sending_user.id).should eq([ message ])
-      end
-
-      it "doesn't return any results for sent messages" do
-        Message.sent_messages(sending_user.id, receiving_user.id).should eq([ ])
-      end
+  describe "mailer" do
+    before do
+      ActionMailer::Base.deliveries = []
+    end
+    
+    it "sends an email to the receiver when a message is sent to them" do
+      mail = MessageMailer.new_message(message)
+      ActionMailer::Base.deliveries.should eq([mail])
     end
   end
 end
