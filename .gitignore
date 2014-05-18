@@ -17,3 +17,4 @@
 .pairs
 .DS_Store
 /public/system/
+config/secrets.yml
