@@ -53,7 +53,7 @@
                 <div class="panel">
               <h5><%= user.screen_name %></h5>
                 <h6 class="subheader"><%= user.gender %><br>
-                <%= user.address %></h6></a>
+                <%= ommit_last_three_characters(user.address) %></h6></a>
               </div>
             </div>
              <% end %>
