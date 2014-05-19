@@ -35,10 +35,6 @@
               <%= f.select :exercise_type, exercise_type_list, autocomplete: "off" %>
             <%= f.label :experience %>
               <%= f.select :experience, experience_types_list, autocomplete: "off" %>
-            <%= f.label :prefered_place %>
-              <%= f.text_field :prefered_place %>
-            <%= f.label :prefered_time %>
-              <%= f.select :prefered_time, prefered_times_list %>
             <%= f.submit "Sign up", class: "button" %>
           <% end %>
         <%= render "devise/shared/links" %>

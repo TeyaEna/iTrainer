@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   PERMITTED_ATTRIBUTES = [:first_name, :last_name, :screen_name, :gender, :age,  :about_me, :address, :avatar, :latitude, :longitude, 
-  :exercise_type, :experience, :prefered_time, :prefered_place ].freeze
+  :exercise_type, :experience ].freeze
 
   before_action :configure_permitted_parameters, if: :devise_controller?
 

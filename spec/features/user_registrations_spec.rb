@@ -17,8 +17,6 @@ feature "User Registration" do
     attach_file("Avatar", Rails.root + 'spec/fixtures/images/ruby.png')
     select "Beginner", from: :user_experience
     select "Strength", from: :user_exercise_type
-    select "Early Morning (6-8am)", from: :user_prefered_time
-    fill_in :user_prefered_place, with: user.prefered_place
     fill_in :user_address, with: "New York, NY" 
     click_button("Sign up")
     visit users_path
@@ -34,8 +32,6 @@ feature "User Registration" do
     fill_in :user_password_confirmation, with: user.password_confirmation
     fill_in :user_about_me, with: user.about_me
     attach_file("Avatar", Rails.root + 'spec/fixtures/images/ruby.png')
-    select "Early Morning (6-8am)", from: :user_prefered_time
-    fill_in :user_prefered_place, with: user.prefered_place
     fill_in :user_address, with: "New York, NY" 
     click_button("Sign up")
     visit new_user_registration_path
