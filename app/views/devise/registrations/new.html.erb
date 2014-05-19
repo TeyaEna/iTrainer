@@ -29,8 +29,8 @@
               <%= f.text_area :about_me, placeholder: "Please enter a minimum of 100 characters about yourself" %><br>
             <%= f.label :avatar %>
               <%= f.file_field :avatar %>
-            <%= f.label :address %>
-              <%= f.text_field :address %>
+            <%= f.label :postcode %>
+              <%= f.text_field :address, placeholder: "Your postcode, the last three characters will be ommited on the sitse" %>
             <%= f.label :exercise_type %>
               <%= f.select :exercise_type, exercise_type_list, autocomplete: "off" %>
             <%= f.label :experience %>
