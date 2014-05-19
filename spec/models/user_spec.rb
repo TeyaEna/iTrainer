@@ -90,11 +90,6 @@ describe User do
       subject.should have(1).error_on(:exercise_type)
     end
 
-    it "validates presence of prefered times" do
-      subject.prefered_time = ""
-      subject.should have(1).error_on(:prefered_time)
-    end
-
     it "validates length of about me" do
       subject.about_me = "12"
       subject.should have(1).error_on(:about_me)      

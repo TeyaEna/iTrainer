@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   validates :first_name, :last_name,:gender,:age,:screen_name, :address, presence: true
-  validates :exercise_type, :experience, :prefered_time, presence: true
+  validates :exercise_type, :experience, presence: true
   validates :first_name, :last_name , format: {with: /\A[A-Za-z]+\z/}
   validates :about_me, presence: true, length: { minimum: 100 }
   validates :screen_name, uniqueness: true

@@ -16,8 +16,6 @@ FactoryGirl.define do
     address "New York, NY"
     exercise_type "Strength"
     experience "Beginner"
-    prefered_place "Hyde park"
-    prefered_time "Early Morning 6am-8am"
   end
 
   factory :message do
