@@ -1,6 +1,11 @@
 module SearchHelper
-
-  def ommit_last_three_characters(post_code)
-    post_code[0...3]
+  def distance_formatter(lat_and_long)
+    if lat_and_long <= 0.49
+      "Less than 1 mile away"
+    elsif lat_and_long <= 1.99
+      "1 mile away"
+    else
+      "#{number_with_precision(lat_and_long, precision: 0)} miles away"      
+    end 
   end
 end

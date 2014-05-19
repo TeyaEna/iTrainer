@@ -1,13 +1,17 @@
 require 'spec_helper'
 
 describe SearchHelper do
-  describe "#ommit_last_three_charecters" do
-    it "removes last three digits of the poscode" do
-      helper.ommit_last_three_characters("n17 7np").should eq("n17")
+  describe "#distance_formatter" do
+    it "returns very close to you when the location is 0 or less miles" do
+      helper.distance_formatter(0.1).should eq("Less than 1 mile away")
     end
 
-    it "even when only two digits are entered" do
-      helper.ommit_last_three_characters("n1").should eq("n1")
+    it "returns 1 mile away from you when the distance is 1 miles" do
+      helper.distance_formatter(1.44).should eq("1 mile away")
+    end
+
+    it "returns x miles away when the distance is greater than 1 miles" do
+      helper.distance_formatter(2).should eq("2 miles away")
     end
   end
 end
