@@ -29,7 +29,7 @@
   padding: 15px;
   width: 100%;
   min-width: 20em;
-  opacity: 0.95;
+  background: rgba(255, 255, 255, 0.85);
 }
 
 .signup-panel p {
@@ -47,6 +47,7 @@
   font-size: 15px;
   font-weight: 200;
   margin-left: 5%;
+  color: black;
 }
 
 .profile-panel h5 {
@@ -55,7 +56,7 @@
   margin-left: 5%;
 }
 .profile-panel {
-  background: white;
+  background: rgba(255, 255, 255, 0.85); 
   border-radius: 5px;
   padding: 15px;
   width: 100%;
@@ -64,28 +65,34 @@
 }
 
 div.panel {
-border-style: solid;
-border-width: 1px;
-border-color: white;
-margin-bottom: 1.25rem;
-padding: 1.25rem;
-background: white;
+  margin-bottom: 1.25rem;
+  padding: 1.25rem;
+  background: rgba(51, 55, 57, 0.70); 
   border-radius: 5px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: rgba(51, 55, 57, 0.70);
+}
+
+.panel h6.subheader {
+  line-height: 1.4;
+  font-size: 13px;
+  padding-top: 2px;
 }
 
 div.panel h5 {
-color: #333739;
+  color: white;
 }
 
 .panel h1.subheader, .panel h2.subheader, 
 .panel h3.subheader, .panel h4.subheader, 
 .panel h5.subheader, .panel h5, .panel h6.subheader {
 line-height: 1.4;
-color: #333739;
+color: white;
 }
 
 .search-panel {
-  background: white;
+  background: rgba(255, 255, 255, 0.85); 
   border-radius: 5px;
   padding: 15px;
   width: 100%;
@@ -99,4 +106,8 @@ color: #333739;
 
 .search-panel .button {
   margin-left: 35%;
+}
+
+.float-left{
+  float: left;
 }
