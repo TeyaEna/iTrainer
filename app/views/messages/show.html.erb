@@ -1,10 +1,13 @@
+<body id="generic-page-style">
+  <div class="row"> 
+      <div class="email-content-panel">
 <table>
   <thead>
     <tr>
-      <th width="200">Time</th>
-      <th width="150">Sender</th>
-      <th width="150">Subject</th>
-      <th width="150">Message</th>
+      <th width="110">Sender</th>
+      <th width="150">Time</th>
+      <th width="70">Subject</th>
+      <th width="550">Message</th>
     </tr>
   </thead>
     <tbody>
@@ -25,3 +28,9 @@
   <%= form.hidden_field(:receiver_id, value: @received_messages.last.sender_id ) %>
   <%= form.submit("Reply", class: "button") %>
 <% end %>
+      </div>
+    </div> 
+  </div> 
+</body>
+
+

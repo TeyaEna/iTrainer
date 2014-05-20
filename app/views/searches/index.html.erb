@@ -1,88 +1,10 @@
-     
   <% if @users.present? %>
   <%= render("shared/user_list") %>
   <% else %>
-  <div class="error-panel">
+  <div class="alert-box secondary" >
   Sorry, no matches found!
   </div>
+    <%= render("shared/user_list") %>
   <% end %> 
 
-  <body id="generic-page-style">
-    <div class="row">
-    <div class="large-12 columns"> 
-    <div class="row"> 
-  <!-- Side Bar -->
-    <div class="picture-grid"> 
-    <div class="large-4 small-12 columns">
-      <%= form_tag(searches_path, method: 'get') do %>
-      <div class="signup-panel">
-      <%= label_tag :gender%>
-      <%= select_tag(:gender, options_for_select([ "Male", "Female", "Other"]), :include_blank => true ) %>
-      <% params[:gender] %>
-
-      <%= label_tag :age %>
-      <%= select_tag(:age, options_for_select({ '18-35' => 18..35, '35-49' => 35..49, '50-64' =>  50..64, '65+' => 65}),:include_blank => true )%>
-      <% params[:age] %>
-
-      <%= label_tag :experience %>
-      <%= select_tag(:experience, options_for_select(experience_types_list), :include_blank => true)%>
-      <% params[:experience] %>
-
-      <%= label_tag :exercise %>
-      <%= select_tag(:exercise, options_for_select(exercise_type_list), :include_blank => true)%>
-      <% params[:exercise] %>
-      <div class="row">
-      <ul class="button-group fix_button_group">
-        <li><%= submit_tag('Filter', :class => 'button tiny')%></li>
-        <li><%= link_to "Clear filter", users_path, :method => :show, :class => 'button tiny'%></li>
-      </ul>
-    </div>
-  </div>
-      <% end %>
-    </div>    
-  </div>
-
-    <!-- End Side Bar -->
-    <!-- Thumbnails -->
-        <div class="large-8 columns">
-          <div class="row">
-            <% @users.each do |user| %> 
-            <div class="large-4 small-6 columns">
-              <a href="<%= user_path(user.id) %>">  
-              <%= image_tag user.avatar(:medium) %>           
-                <div class="panel">
-              <h5><%= user.screen_name %></h5>
-                <h6 class="subheader"><%= user.gender %><br>
-                <%= ommit_last_three_characters(user.address) %></h6></a>
-              </div>
-            </div>
-             <% end %>
-          </div>
-          </div>
-    <!-- End Thumbnails -->
-
-          </div>
-        </div>
-      </div>
-    </body>  
-
-    <!-- Footer -->
-      <footer class="row" class="text-center">
-        <div class="large-12 columns"><hr />
-          <div class="row">
- 
-            <div class="large-6 columns">
-              <p>© Shaban Karumba &amp; Teja Kocjancic.</p>
-            </div>
-
-           </div>
-          </div>
-        </div>
-      </footer>
- 
-    <!-- End Footer -->
- 
-    </div>
-  </div>
-</body>   
 

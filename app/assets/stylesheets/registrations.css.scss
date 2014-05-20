@@ -1,15 +1,22 @@
 #sign-up{
-  background: -webkit-gradient(radial, center center, 0, center center, 460, from(#58c5e4), to(#4db4dc));
+  background-image: image-url('floor.png'); // link to /assets/images/floor.png;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
   text-alin: letf;
   margin-left: 50px;
+  background-attachment: fixed;
 }
 
 .logo-sign-up {
   margin-top: 30px;
   margin-bottom: 30px;
   margin-left: -10px;
-  max-width: 30%;
+  max-width: 25%;
   min-width: 20em;
+  position: fixed;
+
 }
 
 .signup-fields{
@@ -22,7 +29,7 @@
   padding: 15px;
   width: 100%;
   min-width: 20em;
-  min-height: 360px;  
+  opacity: 0.95;
 }
 
 .signup-panel p {
@@ -56,6 +63,40 @@
   min-height: 360px;  
 }
 
-.panel .h5 .h6 {
-      font-family: 'Gotham';
+div.panel {
+border-style: solid;
+border-width: 1px;
+border-color: white;
+margin-bottom: 1.25rem;
+padding: 1.25rem;
+background: white;
+  border-radius: 5px;
+}
+
+div.panel h5 {
+color: #333739;
+}
+
+.panel h1.subheader, .panel h2.subheader, 
+.panel h3.subheader, .panel h4.subheader, 
+.panel h5.subheader, .panel h5, .panel h6.subheader {
+line-height: 1.4;
+color: #333739;
+}
+
+.search-panel {
+  background: white;
+  border-radius: 5px;
+  padding: 15px;
+  width: 100%;
+  min-width: 20em;
+  color: #333739;
+}
+
+.search-panel label {
+  color: #333739;
+}
+
+.search-panel .button {
+  margin-left: 35%;
 }

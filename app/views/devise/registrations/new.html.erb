@@ -1,6 +1,6 @@
 <body id="sign-up">
   <div class="logo-sign-up">
-    <%=image_tag("logo.png", alt: "iTrainer logo") %>
+    <%=link_to image_tag("logo.png", alt: "iTrainer logo"), '/' %>
   </div>
   <div class="small-6 large-centered columns">
     <div class="row">
@@ -9,32 +9,79 @@
           <h4>Create your shiny account</h4>
           <div class="signup-fields">
             <%= devise_error_messages! %>
+  <div class="row">
+    <div class="large-4 columns">
             <%= f.label :first_name %><br />
               <%= f.text_field :first_name, autofocus: true %>
+      </label>
+    </div>
+    <div class="large-4 columns">
             <%= f.label :last_name %><br />
               <%= f.text_field :last_name, autofocus: true %>
+      </label>
+    </div>              
+    <div class="large-4 columns">
             <%= f.label :screen_name %><br />
               <%= f.text_field :screen_name, autofocus: true %>
+      </label>
+    </div>
+  </div>
             <%= f.label :email %><br />
               <%= f.email_field :email, autofocus: true %>
+
+  <div class="row">
+    <div class="large-6 columns">
+
             <%= f.label :password %><br />
               <%= f.password_field :password, autocomplete: "off" %>
+      </label>
+    </div>
+    <div class="large-6 columns">
             <%= f.label :password_confirmation %><br />
               <%= f.password_field :password_confirmation, autocomplete: "off" %>
+      </label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-6 columns">
             <%= f.label :age %><br />
               <%= f.select :age, 18..99, autofocus: true %>
+      </label>
+    </div>
+    <div class="large-6 columns">
             <%= f.label :gender %><br />
               <%= f.select :gender, ["Male", "Female", "Undefined"], autocomplete: "off" %>
+      </label>
+    </div>
+  </div>     
+
             <%= f.label :about_me %>
               <%= f.text_area :about_me, placeholder: "Please enter a minimum of 100 characters about yourself" %><br>
+   <div class="row">
+    <div class="large-6 columns">             
             <%= f.label :avatar %>
               <%= f.file_field :avatar %>
+      </label>
+    </div>
+    <div class="large-6 columns">
             <%= f.label :postcode %>
-              <%= f.text_field :address, placeholder: "Your postcode, the last three characters will be ommited on the sitse" %>
+              <%= f.text_field :address, placeholder: "Will not be displayed" %>
+       </label>
+    </div>
+  </div>              
+  <div class="row">
+    <div class="large-6 columns">
             <%= f.label :exercise_type %>
               <%= f.select :exercise_type, exercise_type_list, autocomplete: "off" %>
+      </label>
+    </div>
+    <div class="large-6 columns">
             <%= f.label :experience %>
               <%= f.select :experience, experience_types_list, autocomplete: "off" %>
+      </label>
+    </div>
+  </div>                 
+
             <%= f.submit "Sign up", class: "button" %>
           <% end %>
         <%= render "devise/shared/links" %>
