@@ -16,5 +16,6 @@
 //= require turbolinks
 //= require_tree .
 //= require foundation
+//= require jquery.jqEasyCharCounter.js
 
 $(function(){ $(document).foundation(); });
