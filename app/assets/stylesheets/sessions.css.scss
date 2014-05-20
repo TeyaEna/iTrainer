@@ -142,21 +142,42 @@ ul.right {
 }
 
 .alert-box.secondary {
-text-align: center;
-background-color: #e7e7e7;
-border-color: #c7c7c7;
-color: #4f4f4f;
-margin-top: 80px;
-margin-bottom: -80px;
+  text-align: center;
+  background-color: #e7e7e7;
+  border-color: #c7c7c7;
+  color: #4f4f4f;
+  margin-top: 80px;
+  margin-bottom: -80px;
 }
 
 .panel h6.subheader {
-line-height: 1.4;
-font-size: 13px;
-padding-top: 2px;
+  line-height: 1.4;
+  font-size: 13px;
+  padding-top: 2px;
 }
 
+.profile-grid {
+  margin-top: 100px;  
+}
 
+.back-link {
+  margin-left: 250px;
+  margin-top: 3%;
+}
 
+.message-link {
+  margin-left: 80px;
+  margin-top: 15px;
+}
 
+@media (min-width: 1000px) {
+  .search-panel {
+    position: fixed;
+    }
+}
 
+@media (max-width: 1000px) {
+  .profile-grid {
+    max-width: 300px;
+    }
+}

@@ -1,35 +1,35 @@
 <body id="generic-page-style">
   <div class="row"> 
       <div class="email-content-panel">
-<table>
-  <thead>
-    <tr>
-      <th width="110">Sender</th>
-      <th width="150">Time</th>
-      <th width="70">Subject</th>
-      <th width="550">Message</th>
-    </tr>
-  </thead>
-    <tbody>
-      <% @messages.each do |message| %>          
-      <tr>
-          <td><%= screen_name_changer(message.sender.screen_name, current_user.screen_name)%></td>
-          <td><%= time_ago_in_words(message.created_at) %></td>
-          <td><%= message.subject %></td>
-          <td><%= message.body %></td>
+        <table>
+          <thead>
+            <tr>
+              <th>Sender</th>
+              <th>Time</th>
+              <th>Subject</th>
+              <th>Message</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @messages.each do |message| %>          
+            <tr>
+              <td><%= screen_name_changer(message.sender.screen_name, current_user.screen_name)%></td>
+              <td><%= time_ago_in_words(message.created_at) %></td>
+              <td><%= message.subject %></td>
+              <td><%= message.body %></td>
+            <% end %>
+              </tr>
+            </tbody>
+        </table>
+        <% if @messages.any? {|message| message.receiver_id  == current_user.id } %> 
+          <%= form_for(Message.new, url: {action: "create", controller: "replies"} ) do |form| %>
+          <%= form.text_area(:body, id: 'message-text') %>
+          <div id="chars-left"> </div>
+            <%= form.hidden_field(:subject, value: @message.subject) %>
+            <%= form.hidden_field(:receiver_id, value: @received_messages.last.sender_id ) %>
+            <%= form.submit("Reply", class: "button") %>
+          <% end %>
         <% end %>
-      </tr>
-    </tbody>
-</table>
-<% if @messages.any? {|message| message.receiver_id  == current_user.id } %> 
-  <%= form_for(Message.new, url: {action: "create", controller: "replies"} ) do |form| %>
-    <%= form.text_area(:body, id: 'message-text') %>
-    <div id="chars-left"> </div>
-    <%= form.hidden_field(:subject, value: @message.subject) %>
-    <%= form.hidden_field(:receiver_id, value: @received_messages.last.sender_id ) %>
-    <%= form.submit("Reply", class: "button") %>
-  <% end %>
-<% end %>
       </div>
     </div> 
   </div> 

@@ -2,7 +2,6 @@
   <div class="row">
     <div class="large-12 columns"> 
       <div class="row">
-        <div class="picture-grid"> 
           <div class="large-4 small-12 columns">
             <%= form_tag(searches_path, method: 'get') do %>
             <div class="search-panel">
@@ -24,30 +23,31 @@
                   <li><%= link_to "Clear filter", users_path, :class => 'button tiny'%></li>
                 </ul>
               </div>
-            </div>
-            <% end %>
-          </div>    
-        </div>
-        <div class="large-8 columns">
-          <div class="row">
-               <% @users.each do |user| %> 
-            <div class="large-4 small-6 columns" style="float:left;">
-                <div class="panel">
-              <a href="<%= user_path(user.id) %>">  
-              <%= image_tag user.avatar(:medium) %>           
-              <h5><%= user.screen_name %></h5>
-                <h6 class="subheader"><%= user.gender %><br>
-                <%= distance_formatter(user.distance_from([current_user.latitude, current_user.longitude]).to_f) %></h6></a>
+              </div>
+              <% end %>
+              </div>   
+              <div class="large-8 columns">
+              <div class="profile-grid"> 
+                <div class="row">
+                  <% @users.each do |user| %> 
+                  <div class="large-4 small-6 columns" style="float:left;">
+                    <div class="panel">
+                    <a href="<%= user_path(user.id) %>">  
+                    <%= image_tag user.avatar(:medium) %>           
+                    <h5><%= user.screen_name %></h5>
+                    <h6 class="subheader"><%= user.gender %><br>
+                    <%= distance_formatter(user.distance_from([current_user.latitude, current_user.longitude]).to_f) %></h6></a>
+                    </div>
+                  </div>
+                  <% end %>
+                </div>
               </div>
             </div>
-             <% end %>
-          </div>
-          </div>
           </div>
         </div>
       </div>
-    </body> 
     </div>
   </div>
-</body>   
+</body> 
+    
 

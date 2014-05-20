@@ -5,17 +5,34 @@
         <div class="profile-picture">
           <div class="profile-panel">
             <div class="large-4 small-12 columns"> 
-            <%= image_tag @user.avatar(:large) %>    
-            <h6><%= link_to("Send a message", new_message_path({ receiver_id: @user.id }) )%></h6>
+            <%= image_tag @user.avatar(:large) %>   
+              <div class="message-link"> 
+              <%= link_to("Send a message", new_message_path({ receiver_id: @user.id }) )%>
+              </div> 
             </div> 
             <div class="large-8 columns">
-              <div class="row">
-              <h3><strong><%= @user.screen_name %></strong></h3><br>
-              <p><%= @user.about_me %></p><br>
-              <p><%= @user.exercise_type %></p><br>
-              <p><%= @user.age %></p><br>
-              <i class="fi-torso"></i><p><%= @user.gender %></p><br>
-              <p><%= link_to "Back to users list", users_path %></p>
+              <div class="list-attributes">
+                <div class="row">
+                <h3><strong><%= @user.screen_name %></strong></h3><br>
+                <p><%= @user.about_me %></p><br>
+                  <div class="small-4 columns">
+                    <div class="small-2 columns">
+                      <i class="fi-star"></i>
+                      <i class="fi-check"></i>
+                      <i class="fi-star"></i>
+                    </div>
+                    <div class="list-descriptions">
+                      <div class="small-2 columns">
+                        <%= @user.exercise_type %>
+                        <%= @user.age %>
+                        <%= @user.gender %><br>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="back-link">
+                  <%= link_to "Back to users list", users_path %>
+                </div>
               </div>
             </div>
           </div>
