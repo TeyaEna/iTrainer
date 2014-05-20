@@ -28,11 +28,11 @@ describe Message do
       end
       describe "received_messages" do
         it "returns a list of messages in ascending oreder" do
-          Message.all_received_messages(receiving_user.id).should eq({ sending_user.id => [ @message_two, @message_one ] })
+          Message.all_received_messages(receiving_user.id).should eq([ @message_two, @message_one ])
         end
 
         it "does not return any messages as there none which match" do
-          Message.all_received_messages(sending_user.id).should eq({})
+          Message.all_received_messages(sending_user.id).should eq([])
         end
       end
 

@@ -18,7 +18,7 @@ describe InboxController do
 
     it "retrieves all the users messages" do
       get :index
-      assigns(:messages).should eq( { sender.id => [ message ]} )
+      assigns(:messages).should eq([ message ])
     end 
   end
 end
