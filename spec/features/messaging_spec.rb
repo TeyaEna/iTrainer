@@ -14,7 +14,7 @@ feature "Messaging" do
     click_link("Send a message")
     new_message_path(receiver_id: user_two.id)
     fill_in :message_subject, with: message.subject
-    fill_in :message_body, with: message.body
+    fill_in "message-text", with: message.body
     click_button("Send")
     visit users_path
     page.has_css?(css: "div.alert.alert-success", text: "Message sent")
@@ -25,7 +25,7 @@ feature "Messaging" do
     click_link("Send a message")
     new_message_path(receiver_id: user_two.id)
     fill_in :message_subject, with: ""
-    fill_in :message_body, with: ""
+    fill_in "message-text", with: ""
     click_button("Send")
     visit users_path
     page.has_css?(css: "div.alert.alert-error", text: "There's an error on the message form")
