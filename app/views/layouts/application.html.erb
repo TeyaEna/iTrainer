@@ -12,23 +12,18 @@
 
   <body>
   <nav class="top-bar" data-topbar>
+        <div class="row">
+    <section class="top-bar-section">
     <ul class="title-area">
-      <%= image_tag("logo.png", alt: "iTrainer logo", style: "height: 42px; width: 160px;") %>
+      <%=link_to image_tag("logo.png", alt: "iTrainer logo", style: "height: 42px; width: 160px; margin-left: 15px;"), '/users' %>
     <li class="toggle-topbar menu-icon"><a href="#"><span>menu</span></a></li>
     </ul>
-    <section class="top-bar-section">
-      <!-- Right Nav Section -->
       <ul class="right">
-        <li class="divider"></li>
         <li><%= link_to "Inbox", inbox_index_path %></li>
-        <li class="divider"></li>
-        <li class="divider"></li>
         <li><%= link_to "Users", users_path %></li>
-        <li class="divider"></li>
-        <li class="divider"></li>
         <li><%= link_to "Sign Out", sign_out_path, :method => :delete %></li>
-        <li class="divider"></li>
       </ul>
+    </div>
     </section>
   </nav>
 
@@ -36,7 +31,7 @@
       <% flash.each do |name, msg| %>
         <% name ? 'success' : 'warning' %>
           <div class="alerts-box">
-            <div data-alert class="alert-box <%= name %> radius">
+            <div data-alert class="alert-box <%= name %> secondary">
               <%= "#{msg}!" %>
             </div>
           </div>

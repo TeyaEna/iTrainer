@@ -1,7 +1,10 @@
 #sign-in{
-  background: -webkit-gradient(radial, center center, 0, center center, 460, from(#58c5e4), to(#4db4dc));
+  background-image: image-url('bg.png'); // link to /assets/images/bg.png;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
   text-alin: letf;
-  margin-left: 50px;
 }
 
 .logo-sign-in {
@@ -12,6 +15,8 @@
 }
 
 .signin-panel{
+  margin-left: auto;
+  margin-right: auto;
   margin-top: 25px;
   text-align: left;
   width: 100%;
@@ -19,8 +24,12 @@
   background: white;
   border-radius: 5px;
   padding: 10px;
+  opacity: 0.95;
 }
 
+.sign-in-title h2, p{
+  color: white;
+}
 .signin-fields{
   padding-top: 15px;
 }
@@ -28,33 +37,22 @@
 .signin-panel p {
   font-size: 15px;
   font-weight: 200;
-  margin-left: 30%;
+  margin-left: 19%;
+  color: black;
 }
 
 .signin-panel .button {
-  margin-left: 40%;
+  margin-left: 35%;
 }
 
 #generic-page-style {
-  background: -webkit-gradient(radial, center center, 0, center center, 460, from(#76cbe3), to(#4db4dc)); 
+  background-image: image-url('basket.png'); // link to /assets/images/basket.png;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-attachment: fixed;
 }
-
-.top-bar {
-  max-width: 100%;
-}
-
-.picture-grid {
-  margin-top: 15px;
-}  
-
-.profile-picture {
-  margin-top: 15px;  
-}
-
-.sports-icons{
-  margin-left: -40px;
-  margin-top: 70px;
-  }
 
 .fix_button_group{
 white-space: nowrap;
@@ -67,3 +65,80 @@ white-space: nowrap;
   width: 100%;
   min-width: 20em;
   } 
+
+nav.top-bar{
+height: 80px;
+background: #333333;
+position: fixed;
+top: 0;
+width: 100%;
+z-index: 10000;
+}
+
+.top-bar-section {
+  max-width: 1200px;
+}
+
+.title-area {
+  margin-left: 15px;
+  line-height: 80px;
+}
+
+ul.right {
+  padding-top: 30px;
+}
+
+.picture-grid {
+  padding-top: 90px;  
+}
+
+.email-panel{
+  margin-top: 120px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+  width: 70%;
+  min-width: 20em;
+  background: white;
+  border-radius: 5px;
+  padding: 10px;
+  opacity: 0.95;
+}
+
+.email-list-panel{
+  margin-top: 120px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+  width: 85%;
+  min-width: 20em;
+  background: white;
+  border-radius: 5px;
+  padding: 10px;
+  opacity: 0.95;
+}
+
+.email-content-panel{
+  margin-top: 120px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+  width: 85%;
+  min-width: 20em;
+  background: white;
+  border-radius: 5px;
+  padding: 10px;
+  opacity: 0.95;
+}
+.profile-picture {
+  margin-top: 100px;
+}
+
+.alert-box.secondary {
+text-align: center;
+background-color: #e7e7e7;
+border-color: #c7c7c7;
+color: #4f4f4f;
+margin-top: 80px;
+margin-bottom: -80px;
+}

@@ -1,21 +1,25 @@
-<table>
-  <thead>
+<body id="generic-page-style">
+  <div class="row"> 
+      <div class="email-list-panel">
+        <table>
+            <thead>
     <tr>
+      <th width="70"></th>
       <th width="150">Sender</th>
       <th width="150">Subject</th>
-      <th width="150">Message</th>
-      <th width="200">Time</th>
+      <th width="150">Content</th>
+      <th width="150">Time</th>
     </tr>
   </thead>
   <tbody>
     <% if @messages.size > 0 %>
       <% @messages.each do |id, message| %>
       <tr>
+        <td><%= image_tag message.first.sender.avatar(:small) %></td> 
         <td><%= message.first.sender.screen_name %></td>
         <td><%= message.first.subject %></td>
-        <td><%= message.first.body %></td>
-        <td><%= time_ago_in_words(message.first.created_at) %></td>
         <td><%= link_to("Thread", thread_path(message.first.id))%></td>
+        <td><%= time_ago_in_words(message.first.created_at) %></td>
       </tr>
   </tbody>
     <% end %>
@@ -23,3 +27,7 @@
     <p> You have no messages in your inbox </p>
   <% end %>
 </table>
+      </div>
+    </div> 
+  </div> 
+</body>
