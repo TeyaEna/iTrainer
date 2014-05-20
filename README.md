@@ -19,12 +19,15 @@ This is iTrainer a website to find your fitness buddy
 
 4. `rake db:setup` to set the database up and add the data in the seeds file
 
-5. Add your email and password into the secrets.yml file for the development, test and production environments in the following format:-
+5. Add a file called secrets.yml into your project and add your secrect_key_base, email_username and email_password into the file for the development, test and production environments in the following format:-
 
 ```ruby
 development:
-  email_username: "example@gmail.com"
-  email_password: "hello123"
+  secret_key_base: lldlldldldldmjddjjdjdjd
+  email_username: example@gmail.com
+  email_password: hello123
 ```
+
+To generate a secret key base run `rake secret `
 
 6. `rails server` to start the server
