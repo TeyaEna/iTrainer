@@ -1,7 +1,7 @@
 module SearchHelper
   def distance_formatter(lat_and_long)
     if lat_and_long <= 0.49
-      "Less than 1 mile away"
+      "Less than a mile away"
     elsif lat_and_long <= 1.99
       "1 mile away"
     else
