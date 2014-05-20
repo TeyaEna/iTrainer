@@ -23,7 +23,8 @@
 </table>
 <% if @messages.any? {|message| message.receiver_id  == current_user.id } %> 
   <%= form_for(Message.new, url: {action: "create", controller: "replies"} ) do |form| %>
-    <%= form.text_area(:body) %>
+    <%= form.text_area(:body, id: 'message-text') %>
+    <div id="chars-left"> </div>
     <%= form.hidden_field(:subject, value: @message.subject) %>
     <%= form.hidden_field(:receiver_id, value: @received_messages.last.sender_id ) %>
     <%= form.submit("Reply", class: "button") %>

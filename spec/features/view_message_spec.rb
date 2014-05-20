@@ -24,7 +24,7 @@ feature "Viewing a message" do
       visit inbox_index_path
       click_link("Thread")
       visit message_path(message.id)
-      fill_in :message_body, with: message.body
+      fill_in "message-text", with: message.body
       click_button("Reply")
       page.should have_content("Message sent")
     end
@@ -33,7 +33,7 @@ feature "Viewing a message" do
       visit inbox_index_path
       click_link("Thread")
       visit message_path(message.id)
-      fill_in :message_body, with: ""
+      fill_in "message-text", with: ""
       click_button("Reply")
       page.should have_content("There's an error on the reply")
     end
