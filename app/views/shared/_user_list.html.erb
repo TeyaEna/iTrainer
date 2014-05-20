@@ -31,7 +31,7 @@
         <div class="large-8 columns">
           <div class="row">
                <% @users.each do |user| %> 
-            <div class="large-4 small-6 columns">
+            <div class="large-4 small-6 columns" style="float:left;">
                 <div class="panel">
               <a href="<%= user_path(user.id) %>">  
               <%= image_tag user.avatar(:medium) %>           
@@ -43,8 +43,6 @@
              <% end %>
           </div>
           </div>
-    <!-- End Thumbnails -->
-
           </div>
         </div>
       </div>
