@@ -7,6 +7,9 @@ describe Message do
   let(:receiver) { {receiver_id: receiving_user.id, sender_id: sending_user.id} }
   let(:sender) { {sender_id: receiving_user.id, receiver_id: sending_user.id  } }
   let(:message) { FactoryGirl.create(:message, sender) }
+  let(:message_one) { FactoryGirl.create(:message, receiver) }
+  let(:message_two) { FactoryGirl.create(:message, receiver) }
+  let(:mail) { MessageMailer.new_message(message) }
  
   describe "validations" do
     it "a blank subject raises a validation error" do
@@ -22,13 +25,9 @@ describe Message do
 
   describe "scopes" do
     context "as the receiving user" do
-      before do
-        @message_one = FactoryGirl.create(:message, receiver)
-        @message_two = FactoryGirl.create(:second_message, receiver)
-      end
-      describe "received_messages" do
+      describe "#received_messages" do
         it "returns a list of messages in ascending oreder" do
-          Message.all_received_messages(receiving_user.id).should eq([ @message_two, @message_one ])
+          Message.all_received_messages(receiving_user.id).should eq([ message_one ])
         end
 
         it "does not return any messages as there none which match" do
@@ -38,7 +37,7 @@ describe Message do
 
       describe "#received_messages" do
         it "returns all the received messages based on sender_id and receiver_id" do
-          Message.received_messages(receiving_user.id, sending_user.id).should eq([ @message_two, @message_one ])
+          Message.received_messages(receiving_user.id, sending_user.id).should eq([ message_one ])
         end
 
         it "doesn't return any results for received messages" do
@@ -64,7 +63,6 @@ describe Message do
     end
     
     it "sends an email to the receiver when a message is sent to them" do
-      mail = MessageMailer.new_message(message)
       ActionMailer::Base.deliveries.should eq([mail])
     end
   end
