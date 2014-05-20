@@ -14,26 +14,28 @@ feature "Viewing a message" do
 
   scenario "by going clicking on a message link" do
     visit inbox_index_path
-    click_link("Message")
+    click_link("Thread")
     visit message_path(message.id)
     page.should have_content(message.body)
   end
 
-  scenario "replying to a message" do
-    visit inbox_index_path
-    click_link("Message")
-    visit message_path(message.id)
-    fill_in :message_body, with: message.body
-    click_button("Reply")
-    page.should have_content("Message sent")
-  end
+  context "when the user has an email sent to them" do
+    scenario "replying to a message" do
+      visit inbox_index_path
+      click_link("Thread")
+      visit message_path(message.id)
+      fill_in :message_body, with: message.body
+      click_button("Reply")
+      page.should have_content("Message sent")
+    end
 
-  scenario "when no body is sent with the reply raise an error" do
-    visit inbox_index_path
-    click_link("Message")
-    visit message_path(message.id)
-    fill_in :message_body, with: ""
-    click_button("Reply")
-    page.should have_content("There's an error on the reply")
+    scenario "when no body is sent with the reply raise an error" do
+      visit inbox_index_path
+      click_link("Thread")
+      visit message_path(message.id)
+      fill_in :message_body, with: ""
+      click_button("Reply")
+      page.should have_content("There's an error on the reply")
+    end
   end
 end
