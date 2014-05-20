@@ -12,5 +12,5 @@ Rails.application.routes.draw do
   resources :inbox, only: ['index']
   resources :replies, only: ['create']
 
-  match "/thread/:id" => "messages#show", as: "thread", via: 'get'
+  match "/conversation/:id" => "messages#show", as: "conversation", via: 'get'
 end

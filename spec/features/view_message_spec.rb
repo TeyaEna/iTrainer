@@ -14,7 +14,7 @@ feature "Viewing a message" do
 
   scenario "by going clicking on a message link" do
     visit inbox_index_path
-    click_link("Thread")
+    click_link("Conversation")
     visit message_path(message.id)
     page.should have_content(message.body)
   end
@@ -22,7 +22,7 @@ feature "Viewing a message" do
   context "when the user has an email sent to them" do
     scenario "replying to a message" do
       visit inbox_index_path
-      click_link("Thread")
+      click_link("Conversation")
       visit message_path(message.id)
       fill_in "message-text", with: message.body
       click_button("Reply")
@@ -31,7 +31,7 @@ feature "Viewing a message" do
 
     scenario "when no body is sent with the reply raise an error" do
       visit inbox_index_path
-      click_link("Thread")
+      click_link("Conversation")
       visit message_path(message.id)
       fill_in "message-text", with: ""
       click_button("Reply")
