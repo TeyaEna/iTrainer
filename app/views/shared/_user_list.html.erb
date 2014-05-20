@@ -7,16 +7,16 @@
             <div class="search-panel">
               <%= label_tag :gender%>
               <%= select_tag(:gender, options_for_select([ "Male", "Female", "Other"]), :include_blank => true ) %>
-              <% params[:gender] %>
+
               <%= label_tag :age %>
               <%= select_tag(:age, options_for_select({ '18-35' => 18..35, '35-49' => 35..49, '50-64' =>  50..64, '65+' => 65}),:include_blank => true )%>
-              <% params[:age] %>
+              
               <%= label_tag :experience %>
               <%= select_tag(:experience, options_for_select(experience_types_list), :include_blank => true)%>
-              <% params[:experience] %>
+              
               <%= label_tag :exercise %>
               <%= select_tag(:exercise, options_for_select(exercise_type_list), :include_blank => true)%>
-              <% params[:exercise] %>
+              
               <div class="row">
                 <ul class="button-group fix_button_group">
                   <li><%= submit_tag('Filter', :class => 'button tiny')%></li>
