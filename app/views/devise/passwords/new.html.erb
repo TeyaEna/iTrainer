@@ -12,9 +12,7 @@
           <%= f.email_field :email, autofocus: true %>
           <div class="button-reset-password">
           <%= f.submit "Send me reset password instructions", class: "button small radius" %>
-          <div class="button-reset-links">
-          <%= render "devise/shared/links" %>
-        </div>
+          <p><%= render "devise/shared/links" %></p>
         </div>
           <% end %>
         </div>
