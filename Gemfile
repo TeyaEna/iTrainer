@@ -28,6 +28,7 @@ gem 'spring',        group: :development
 gem 'devise'
 gem 'geocoder'
 gem 'paperclip', github: 'thoughtbot/paperclip'
+gem 'aws-sdk'
 gem 'kaminari'
 
 group :test, :development do
